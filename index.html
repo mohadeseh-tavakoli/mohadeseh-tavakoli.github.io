@@ -448,7 +448,7 @@ const LIVE = [
 ];
 const WORK = [
   { cat:"biz", title:"باشگاه ویونا فیتنس", desc:"سایت باشگاه تخصصی بانوان با معرفی کلاس‌ها، مربیان، پلن‌های عضویت، رزرو سانس و نظرات اعضا.", tags:["ورزشی","رزرو آنلاین","لوکس"], desk:"img/viona-desk.webp", mob:"img/viona-mob.webp", st:"#EFE6EE" },
-  { cat:"shop", title:"فروشگاه ساوا", desc:"فروشگاه کیف و کفش چرم زنانه و مردانه با کالکشن‌های جدید، جست‌وجوی محصول بر اساس رنگ و قیمت، و داستان برند.", tags:["فروشگاهی","چرم","طرح اختصاصی"], platform:"Lovable (طرح و نمونه‌سازی)", desk:"img/sava-desk.webp", mob:"img/sava-mob.webp", st:"#EFE7DC" },
+  { cat:"shop", title:"فروشگاه ساوا", desc:"فروشگاه کیف و کفش چرم زنانه و مردانه با کالکشن‌های جدید، جست‌وجوی محصول بر اساس رنگ و قیمت، و داستان برند.", tags:["فروشگاهی","چرم","طرح اختصاصی"], platform:"WordPress (طرح اولیه با Lovable)", desk:"img/sava-desk.webp", mob:"img/sava-mob.webp", st:"#EFE7DC" },
   { cat:"shop", title:"فروشگاه عطر", desc:"انتخاب عطر بر اساس حس‌وحال، برندهای منتخب، مشاوره‌ی آنلاین و مجله.", tags:["فروشگاهی","لوکس"], desk:"img/perfume-desk.webp", mob:"img/perfume-mob.webp", st:"#F3E4E8" },
   { cat:"biz", title:"کلینیک دندان‌پزشکی", desc:"نوبت‌دهی آنلاین مرحله‌به‌مرحله، خدمات و تعرفه‌ها، پیگیری نوبت و معرفی پزشکان.", tags:["نوبت‌دهی","شرکتی"], desk:"img/dental-desk.webp", mob:"img/dental-mob.webp", st:"#E8EEFB" },
   { cat:"shop", title:"فروشگاه کتونی", desc:"کفش و کتونی با دسته‌بندی، پرفروش‌ها، نظرات مشتریان و مجله‌ی استایل.", tags:["فروشگاهی","موبایل‌محور"], desk:"img/katoni-desk.webp", mob:"img/katoni-mob.webp", st:"#DCE6DD" },
@@ -489,7 +489,7 @@ WORK.forEach(p=>{
   const phone = (p.desk && p.mob) ? `<div class="phone"><img src="${p.mob}" alt="نسخه‌ی موبایل ${p.title}" loading="lazy"></div>` : '';
   el.innerHTML = `<div class="visual">${frame(inner)}${phone}<button class="cover" type="button" aria-label="دیدن کامل ${p.title}"></button></div>
     <div class="tile-meta"><div><h3>${p.title}</h3><p>${p.desc}</p><div class="tags">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div></div>
-    <span class="kind">${p.platform ? "Lovable · " : ""}${p.desk ? "دسکتاپ + موبایل" : "طراحی موبایل"}</span></div>`;
+    <span class="kind">${p.desk ? "دسکتاپ + موبایل" : "طراحی موبایل"}</span></div>`;
   el.querySelector('.cover').addEventListener('click',()=>openLb(p,[["پلتفرم",p.platform||"WordPress"],["نوع",p.tags.join("، ")],["سال","۱۴۰۵"],["وضعیت","نمونه‌طراحی"]]));
   grid.appendChild(el);
   wirePhone(el, el.querySelector(p.desk ? '.phone' : '.pf'));
