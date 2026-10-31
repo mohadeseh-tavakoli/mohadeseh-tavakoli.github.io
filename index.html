@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>محدثه توکلی</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@500;600;700&family=Vazirmatn:wght@300;400;500;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a designer's spec sheet. Real screenshots carry red "redline" pins that name the work behind each part of the page; quiet RTL grid around them. */
+:root{
+  --paper:#EEF0F3;
+  --surface:#FFFFFF;
+  --ink:#131A2E;
+  --muted:#5B6378;
+  --line:#D6DAE2;
+  --red:#E0393E;          /* redline: annotations, key calls to action */
+  --red-ink:#FFFFFF;
+  --ok:#17845A;
+  --frame:#DFE3EA;
+  --shadow:0 24px 50px -30px rgba(19,26,46,.45);
+  --display:"Markazi Text","Vazirmatn",Tahoma,serif;
+  --body:"Vazirmatn",Tahoma,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0E1220;--surface:#171C2E;--ink:#E9ECF4;--muted:#99A1B7;--line:#2A3148;
+  --red:#FF5A5F;--red-ink:#16080A;--ok:#43C68E;--frame:#232A40;
+  --shadow:0 24px 50px -30px rgba(0,0,0,.8);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0E1220;--surface:#171C2E;--ink:#E9ECF4;--muted:#99A1B7;--line:#2A3148;
+  --red:#FF5A5F;--red-ink:#16080A;--ok:#43C68E;--frame:#232A40;
+  --shadow:0 24px 50px -30px rgba(0,0,0,.8);color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.85;
+  padding-inline:max(16px,env(safe-area-inset-left,0px))}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1160px;margin-inline:auto}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:6px}
+.ltr{direction:ltr;unicode-bidi:isolate}
+.mono{font-family:var(--mono);font-size:.78rem;letter-spacing:.01em}
+
+/* header */
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:20px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800}
+.brand img{width:36px;height:36px;border-radius:50%;object-fit:cover}
+nav{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+nav a{text-decoration:none;color:var(--muted);font-weight:500;font-size:.95rem}
+nav a:hover{color:var(--ink)}
+.avail{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;color:var(--ok);font-weight:700}
+.avail::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;box-shadow:0 0 0 4px color-mix(in srgb,currentColor 20%,transparent)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:center;padding-block:40px 64px}
+.who{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.who img{width:64px;height:64px;border-radius:50%;object-fit:cover;border:3px solid var(--surface);box-shadow:var(--shadow)}
+.who b{display:block;font-size:1.05rem}
+.who span{color:var(--muted);font-size:.9rem}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(2.6rem,5.4vw,4.3rem);line-height:1.12;margin:0 0 18px;text-wrap:balance}
+h1 em{font-style:normal;color:var(--red)}
+.lede{color:var(--muted);margin:0 0 26px;max-width:46ch}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:.95rem;padding:10px 20px;border-radius:10px;border:1px solid transparent;cursor:pointer;font-family:inherit}
+.btn.primary{background:var(--red);color:var(--red-ink)}
+.btn.primary:hover{filter:brightness(1.06)}
+.btn.ghost{border-color:var(--line);color:var(--ink);background:transparent}
+.btn.ghost:hover{border-color:var(--ink)}
+.facts{display:flex;gap:32px;margin-top:34px;padding-top:22px;border-top:1px solid var(--line);flex-wrap:wrap}
+.facts b{display:block;font-family:var(--display);font-size:2.2rem;line-height:1;font-weight:700}
+.facts span{color:var(--muted);font-size:.85rem}
+
+/* browser frame */
+.browser{background:var(--frame);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+.bar{display:flex;align-items:center;gap:6px;padding:9px 12px;direction:ltr}
+.bar i{width:9px;height:9px;border-radius:50%;background:var(--line);display:block}
+.screen{position:relative;overflow:hidden;background:#fff}
+.screen img.shot{width:100%;height:100%;object-fit:cover;object-position:top;transition:object-position 7s cubic-bezier(.45,.05,.4,1)}
+
+/* annotated hero shot */
+.spec{position:relative}
+.specbox{position:relative}
+.spec .screen{aspect-ratio:1100/700}
+.phone{position:absolute;left:-18px;bottom:-26px;width:23%;aspect-ratio:9/18;border:6px solid #12151F;border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 18px 30px -12px rgba(0,0,0,.5)}
+.phone img{width:100%}
+.pin{position:absolute;width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;font:700 .8rem/26px var(--body);text-align:center;
+  box-shadow:0 0 0 4px color-mix(in srgb,var(--red) 28%,transparent);transform:translate(50%,-50%);z-index:2}
+.legend{list-style:none;margin:52px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px 24px}
+.legend li{display:flex;gap:10px;align-items:baseline;font-size:.9rem}
+.legend b{flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--red);color:var(--red);font-size:.75rem;display:grid;place-items:center;line-height:1}
+.legend .mono{color:var(--muted)}
+
+/* section heads */
+section.sec{padding-block:72px 8px}
+.head{display:grid;grid-template-columns:200px 1fr;gap:24px;margin-bottom:36px;align-items:baseline}
+.head .mono{color:var(--red)}
+.head h2{font-family:var(--display);font-weight:700;font-size:clamp(2rem,3.6vw,2.7rem);line-height:1.2;margin:0;text-wrap:balance}
+.head p{margin:6px 0 0;color:var(--muted);max-width:60ch}
+
+/* process */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);border-top:2px solid var(--ink)}
+.steps li{padding:18px 16px 4px 0;border-inline-start:1px solid var(--line);display:flex;flex-direction:column;gap:8px;min-width:0}
+.steps li:first-child{border-inline-start:none;padding-inline-start:0}
+.steps .n{font-family:var(--mono);font-size:.75rem;color:var(--red)}
+.steps h3{margin:0;font-size:1.05rem}
+.steps p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.7}
+.steps .tools{display:flex;gap:4px;flex-wrap:wrap;margin-top:auto;padding-top:6px}
+.chip{font-family:var(--mono);font-size:.72rem;background:var(--surface);border:1px solid var(--line);padding:1px 8px;border-radius:6px;direction:ltr;white-space:nowrap}
+
+/* live case studies */
+.case{display:grid;grid-template-columns:1.35fr 1fr;gap:40px;align-items:center;padding-block:28px;border-bottom:1px solid var(--line)}
+.case:last-child{border-bottom:none}
+.case .visual{position:relative;cursor:pointer;margin-bottom:26px}
+.case .screen{height:380px}
+.case .visual:hover .screen img.shot,.case .visual:focus-within .screen img.shot{object-position:bottom}
+.case .phone{width:22%;left:-14px;bottom:-26px}
+.case .phone img{transition:transform 7s cubic-bezier(.45,.05,.4,1)}
+.status{display:inline-flex;align-items:center;gap:7px;font-size:.8rem;font-weight:700;color:var(--ok);border:1px solid currentColor;padding:1px 10px;border-radius:999px}
+.status::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.case h3{font-family:var(--display);font-size:2.1rem;font-weight:700;margin:10px 0 6px;line-height:1.2}
+.case p{margin:0 0 18px;color:var(--muted)}
+.role{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin:0 0 20px;font-size:.9rem}
+.role dt{color:var(--muted)}
+.role dd{margin:0;font-weight:500}
+.linkbtn{all:unset;cursor:pointer;color:var(--red);font-weight:700;font-size:.92rem;border-bottom:1.5px solid currentColor}
+.cover{all:unset;position:absolute;inset:0;cursor:pointer;z-index:3;border-radius:12px}
+.cover:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+
+/* design grid */
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.toolbar button{font:inherit;font-size:.88rem;border:1px solid var(--line);background:transparent;color:var(--muted);padding:5px 16px;border-radius:999px;cursor:pointer}
+.toolbar button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px 28px}
+.tile{display:flex;flex-direction:column;gap:14px;min-width:0}
+.tile .visual{position:relative;margin-bottom:22px}
+.tile .phone{width:21%;left:-12px;bottom:-22px;border-width:5px;border-radius:18px}
+.tile .phone img{transition:transform 7s cubic-bezier(.45,.05,.4,1)}
+.tile .screen{height:300px}
+.tile:hover .screen img.shot,.tile:focus-within .screen img.shot{object-position:bottom}
+.tile .browser{transition:transform .35s ease}
+.tile:hover .browser{transform:translateY(-4px)}
+.stage{height:100%;display:flex;justify-content:center;padding-top:20px;background:var(--st)}
+.stage .pf{width:40%;max-width:160px;border:6px solid #12151F;border-bottom:none;border-radius:20px 20px 0 0;overflow:hidden;background:#fff}
+.stage .pf img{transition:transform 7s cubic-bezier(.45,.05,.4,1)}
+.tile-meta{display:flex;justify-content:space-between;gap:12px;align-items:start}
+.tile h3{margin:0;font-size:1.12rem}
+.tile p{margin:2px 0 0;color:var(--muted);font-size:.9rem;line-height:1.7}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.tags span{font-size:.75rem;color:var(--muted);border:1px solid var(--line);padding:0 9px;border-radius:6px}
+.kind{font-family:var(--body);font-size:.75rem;color:var(--muted);white-space:nowrap;padding-top:4px}
+
+/* resume */
+.cv{display:grid;grid-template-columns:1.45fr 1fr;gap:48px;align-items:start}
+.jobs{display:flex;flex-direction:column}
+.job{display:grid;grid-template-columns:150px 1fr;gap:20px;padding-block:22px;border-top:1px solid var(--line)}
+.job:first-child{border-top:2px solid var(--ink)}
+.when{color:var(--muted);font-size:.85rem;font-variant-numeric:tabular-nums}
+.job h3{margin:0;font-size:1.15rem}
+.where{margin:0 0 8px;color:var(--muted);font-size:.88rem}
+.job ul{margin:0;padding-inline-start:18px;display:flex;flex-direction:column;gap:3px}
+.job li::marker{color:var(--red)}
+.side{display:flex;flex-direction:column;gap:22px;min-width:0}
+.group h4{margin:0 0 10px;font-size:.95rem}
+.group .chips{display:flex;flex-wrap:wrap;gap:6px}
+.group .chip{font-size:.78rem;padding:2px 10px}
+.ai{background:var(--ink);color:var(--paper);border-radius:14px;padding:20px}
+.ai p{margin:0 0 12px;font-size:.88rem;opacity:.8;line-height:1.75}
+.ai .chip{background:transparent;color:var(--paper);border-color:color-mix(in srgb,var(--paper) 35%,transparent)}
+.edu{border-top:1px solid var(--line);padding-top:18px;font-size:.92rem}
+.edu b{display:block}
+.edu span{color:var(--muted)}
+
+
+/* faq */
+.faq{border-top:2px solid var(--ink)}
+.faq details{border-bottom:1px solid var(--line);padding-block:4px}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:16px;font-weight:700;font-size:1.08rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--red);color:var(--red);display:grid;place-items:center;font-weight:500;line-height:1;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .a{padding:0 0 20px;color:var(--muted);max-width:70ch}
+.faq .a p{margin:0 0 10px}
+.faq .a ul{margin:0;padding-inline-start:18px;display:flex;flex-direction:column;gap:4px}
+.faq .a li::marker{color:var(--red)}
+
+/* contact */
+.contact{margin-block:88px 28px;background:var(--ink);color:var(--paper);border-radius:20px;padding:clamp(28px,5vw,56px);display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center}
+.contact h2{font-family:var(--display);font-weight:700;font-size:clamp(2.2rem,4.5vw,3.4rem);line-height:1.15;margin:0 0 10px;text-wrap:balance}
+.contact p{margin:0;opacity:.75;max-width:44ch}
+.ways{display:flex;flex-direction:column;gap:10px}
+.way{display:flex;justify-content:space-between;align-items:center;gap:12px;border:1px solid color-mix(in srgb,var(--paper) 22%,transparent);border-radius:12px;padding:10px 14px}
+.way small{display:block;opacity:.6;font-size:.78rem}
+.way .v{font-family:var(--mono);font-size:.92rem;direction:ltr;unicode-bidi:isolate}
+.way a.v{text-decoration:none}
+.way a.v:hover{text-decoration:underline}
+.copy{font:inherit;font-size:.8rem;background:transparent;color:var(--paper);border:1px solid color-mix(in srgb,var(--paper) 30%,transparent);border-radius:8px;padding:3px 12px;cursor:pointer;white-space:nowrap}
+.copy:hover{border-color:var(--paper)}
+footer{color:var(--muted);font-size:.82rem;padding-block:0 32px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* lightbox */
+dialog{border:none;padding:0;background:transparent;max-width:min(1120px,94vw);width:100%;color:var(--ink)}
+dialog::backdrop{background:rgba(8,10,18,.75);backdrop-filter:blur(4px)}
+.lb{background:var(--surface);border-radius:16px;padding:20px;display:grid;grid-template-columns:1fr 250px;gap:24px;max-height:90vh}
+.lb .screen{height:min(66vh,600px);overflow-y:auto}
+.lb .screen img{width:100%}
+.lb-side{display:flex;flex-direction:column;gap:14px;min-width:0;overflow-y:auto}
+.lb-side h3{margin:0;font-family:var(--display);font-size:1.8rem;line-height:1.2}
+.lb-side p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.75}
+.lb-phone{width:160px;height:300px;border:7px solid #12151F;border-radius:24px;overflow-y:auto;align-self:center;background:#fff;flex:none}
+.lb-close{font:inherit;align-self:flex-end;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:8px;padding:3px 14px;cursor:pointer}
+.lb-side dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:.86rem}
+.lb-side dt{color:var(--muted)}.lb-side dd{margin:0}
+
+@media (max-width:960px){
+  .hero,.case,.cv,.contact{grid-template-columns:1fr}
+  .hero{gap:56px}
+  .steps{grid-template-columns:1fr 1fr}
+  .steps li{border-inline-start:none;border-top:1px solid var(--line);padding:16px 0}
+  .steps li:nth-child(even){padding-inline-start:16px;border-inline-start:1px solid var(--line)}
+  .head{grid-template-columns:1fr;gap:6px}
+  .lb{grid-template-columns:1fr;overflow-y:auto}
+  .lb-phone{display:none}
+}
+@media (max-width:600px){
+  .grid{grid-template-columns:1fr}
+  .legend{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .steps li:nth-child(even){padding-inline-start:0;border-inline-start:none}
+  .case .screen{height:260px}
+  .job{grid-template-columns:1fr;gap:4px}
+  nav a:not(.avail){display:none}
+  .pin{width:22px;height:22px;line-height:22px;font-size:.7rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .screen img.shot,.phone img,.stage .pf img,.tile .browser{transition:none!important}
+}
+</style>
+</head>
+<body>
+<div class="wrap" id="top">
+  <header>
+    <a class="brand" href="#top"><img src="img/me.webp" alt="">محدثه توکلی</a>
+    <nav aria-label="بخش‌ها">
+      <a href="#work">نمونه‌کارها</a>
+      <a href="#process">خدمات</a>
+      <a href="#resume">سوابق</a>
+      <a href="#contact" class="avail">آماده‌ی پروژه‌ی جدید</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <div class="who">
+        <img src="img/me.webp" alt="محدثه توکلی">
+        <div><b>محدثه توکلی</b><span>طراح و مدیر وب‌سایت وردپرس · تهران</span></div>
+      </div>
+      <h1>فروشگاه اینترنتی وردپرسی، از <em>صفحه‌ی خالی</em> تا اولین سفارش.</h1>
+      <p class="lede">طراحی و راه‌اندازی سایت را از صفر تا انتشار انجام می‌دهم: صفحه‌ها با المنتور، فروشگاه با ووکامرس، نمایش درست در موبایل، و تنظیمات سئو، سرعت و امنیت. برای تولید محتوا، متن سئو و ساخت سریع نمونه‌ی اولیه از هوش مصنوعی کمک می‌گیرم.</p>
+      <div class="ctas">
+        <a class="btn primary" href="#work">دیدن نمونه‌کارها</a>
+        <a class="btn ghost" href="https://t.me/Mohadeseh0831" target="_blank" rel="noopener">پیام در تلگرام</a>
+      </div>
+      <div class="facts">
+        <div><b>۷</b><span>پروژه‌ی طراحی</span></div>
+        <div><b>۲</b><span>سایت فعال و آنلاین</span></div>
+        <div><b>۱۱</b><span>ابزار تخصصی وردپرس و سئو</span></div>
+      </div>
+    </div>
+
+    <figure class="spec" style="margin:0">
+      <div class="specbox">
+      <div class="browser">
+        <div class="bar"><i></i><i></i><i></i></div>
+        <div class="screen"><img class="shot" src="img/johar-desk.webp" alt="صفحه‌ی اصلی فروشگاه استاد جوهر"></div>
+      </div>
+      <div class="phone"><img src="img/johar-mob.webp" alt="نسخه‌ی موبایل استاد جوهر"></div>
+      <span class="pin" style="right:13%;top:22%">۱</span>
+      <span class="pin" style="right:46%;top:12%">۲</span>
+      <span class="pin" style="right:50%;top:36%">۳</span>
+      <span class="pin" style="right:44%;top:88%">۴</span>
+      <span class="pin" style="right:84%;top:72%">۵</span>
+      </div>
+      <figcaption>
+        <ol class="legend">
+          <li><b>۱</b><div>منو و ساختار دسته‌بندی‌ها <div class="mono">WooCommerce</div></div></li>
+          <li><b>۲</b><div>جست‌وجوی محصولات و سبد خرید <div class="mono">WoodMart</div></div></li>
+          <li><b>۳</b><div>بنر و صفحه‌آرایی <div class="mono">Elementor Pro</div></div></li>
+          <li><b>۴</b><div>سئو و سرعت صفحه <div class="mono">Yoast · WP Rocket</div></div></li>
+          <li><b>۵</b><div>نسخه‌ی موبایل جداگانه <div class="mono">Responsive</div></div></li>
+          <li style="color:var(--muted);font-size:.82rem">نمونه: فروشگاه استاد جوهر</li>
+        </ol>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="sec" id="process">
+    <div class="head">
+      <span class="mono">۰۱ / خدمات</span>
+      <div>
+        <h2>یک نفر برای همه‌ی مراحل ساخت فروشگاه</h2>
+        <p>هر پروژه از همین پنج مرحله می‌گذرد و هر مرحله را خودم انجام می‌دهم.</p>
+      </div>
+    </div>
+    <ol class="steps">
+      <li><span class="n">۰۱</span><h3>طراحی صفحات</h3><p>چیدمان صفحه‌ها، قالب و بخش‌های مختلف سایت.</p><div class="tools"><span class="chip">Elementor Pro</span><span class="chip">Hello Elementor</span></div></li>
+      <li><span class="n">۰۲</span><h3>ساختار فروشگاه</h3><p>محصولات، دسته‌بندی‌ها و مسیر خرید.</p><div class="tools"><span class="chip">WooCommerce</span><span class="chip">WoodMart</span></div></li>
+      <li><span class="n">۰۳</span><h3>موبایل و دسکتاپ</h3><p>نمایش درست و خوانا در هر اندازه‌ی صفحه.</p><div class="tools"><span class="chip">Responsive</span></div></li>
+      <li><span class="n">۰۴</span><h3>سئو و آمار</h3><p>تنظیمات سئو، ثبت در گوگل و پیگیری بازدید.</p><div class="tools"><span class="chip">Yoast SEO</span><span class="chip">Search Console</span><span class="chip">Analytics</span></div></li>
+      <li><span class="n">۰۵</span><h3>سرعت و امنیت</h3><p>کش، بهینه‌سازی و محافظت از سایت و هاست.</p><div class="tools"><span class="chip">WP Rocket</span><span class="chip">Wordfence</span><span class="chip">cPanel</span></div></li>
+    </ol>
+  </section>
+
+  <section class="sec" id="work">
+    <div class="head">
+      <span class="mono">۰۲ / پروژه‌های فعال</span>
+      <div>
+        <h2>سایت‌هایی که الان آنلاین‌اند و می‌فروشند</h2>
+        <p>نشانگر را روی تصویر نگه دارید تا کل صفحه در دسکتاپ و موبایل اسکرول شود. با کلیک، نسخه‌ی کامل هر دو باز می‌شود.</p>
+      </div>
+    </div>
+    <div id="cases"></div>
+  </section>
+
+  <section class="sec">
+    <div class="head">
+      <span class="mono">۰۳ / نمونه‌طراحی‌ها</span>
+      <div>
+        <h2>طراحی برای کسب‌وکارهای مختلف</h2>
+        <p>طرح‌های وردپرسی با هویت بصری و مخاطب متفاوت، هرکدام با نسخه‌ی موبایل.</p>
+      </div>
+    </div>
+    <div class="toolbar" role="group" aria-label="فیلتر نمونه‌ها">
+      <button type="button" data-f="all" aria-pressed="true">همه</button>
+      <button type="button" data-f="shop" aria-pressed="false">فروشگاهی</button>
+      <button type="button" data-f="biz" aria-pressed="false">خدماتی و ورزشی</button>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section class="sec" id="resume">
+    <div class="head">
+      <span class="mono">۰۴ / سوابق</span>
+      <div>
+        <h2>سابقه‌ی کار و مهارت‌ها</h2>
+        <p>از پاسخ‌گویی به مشتری تا طراحی و مدیریت کامل سایت.</p>
+      </div>
+    </div>
+    <div class="cv">
+      <div class="jobs">
+        <article class="job">
+          <div class="when">مهر ۱۴۰۴ تا اکنون</div>
+          <div>
+            <h3>ادمین و طراح سایت</h3>
+            <p class="where">پروژه‌ای · تهران</p>
+            <ul>
+              <li>طراحی و راه‌اندازی فروشگاه اینترنتی وردپرسی از صفر تا صد</li>
+              <li>طراحی و تنظیم صفحات با Elementor و Elementor Pro</li>
+              <li>ایجاد ساختار فروشگاه با WooCommerce و مدیریت محصولات و دسته‌بندی‌ها</li>
+              <li>تنظیم قالب، افزونه‌ها و بخش‌های مختلف وردپرس</li>
+              <li>بهینه‌سازی نمایش سایت در موبایل و دسکتاپ</li>
+              <li>تنظیمات سئو، سرعت و امنیت سایت</li>
+            </ul>
+          </div>
+        </article>
+        <article class="job">
+          <div class="when">اردیبهشت ۱۴۰۲ تا بهمن ۱۴۰۴</div>
+          <div>
+            <h3>ادمین و پشتیبان</h3>
+            <p class="where">تهران</p>
+            <ul>
+              <li>پاسخ‌گویی به مخاطبان در اینستاگرام، واتس‌اپ، تلگرام، بله و روبیکا</li>
+              <li>مدیریت دایرکت‌ها، کامنت‌ها و پیام‌های ورودی</li>
+              <li>راهنمایی کاربران و پیگیری درخواست‌ها و مشکلات مشتریان</li>
+            </ul>
+          </div>
+        </article>
+        <div class="edu"><b>کارشناسی روان‌شناسی</b><span>مدرسه‌ی عالی شهید مطهری، تهران</span></div>
+      </div>
+      <aside class="side">
+        <div class="group"><h4>طراحی سایت</h4><div class="chips"><span class="chip">WordPress</span><span class="chip">Elementor Pro</span><span class="chip">WooCommerce</span><span class="chip">Hello Elementor</span><span class="chip">WoodMart</span><span class="chip">Responsive</span></div></div>
+        <div class="group"><h4>سئو، سرعت و امنیت</h4><div class="chips"><span class="chip">Yoast SEO</span><span class="chip">Search Console</span><span class="chip">Google Analytics</span><span class="chip">WP Rocket</span><span class="chip">Wordfence</span><span class="chip">cPanel</span></div></div>
+        <div class="group ai"><h4>هوش مصنوعی در کار روزانه</h4><p>تولید محتوا و متن سئو، ایده‌پردازی طراحی، ساخت سریع نمونه‌ی اولیه و حل مشکلات سایت.</p><div class="chips"><span class="chip">Claude</span><span class="chip">ChatGPT</span><span class="chip">Gemini</span><span class="chip">Lovable</span></div></div>
+        <div class="group"><h4>سایر مهارت‌ها</h4><div class="chips"><span class="chip" style="direction:rtl;font-family:var(--body)">مدیریت محتوا</span><span class="chip" style="direction:rtl;font-family:var(--body)">پشتیبانی کاربران</span><span class="chip">Microsoft Office</span><span class="chip" style="direction:rtl;font-family:var(--body)">زبان انگلیسی</span></div></div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="sec" id="faq">
+    <div class="head">
+      <span class="mono">۰۵ / سؤالات</span>
+      <div>
+        <h2>سؤالات متداول</h2>
+      </div>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>آیا این سایت‌ها تماماً با هوش مصنوعی ساخته شده‌اند؟</summary>
+        <div class="a">
+          <p>خیر. از هوش مصنوعی فقط برای سرعت بیشتر کار و به‌عنوان مشاور UI/UX کمک می‌گیرم.</p>
+          <ul>
+            <li>سایت‌ها با المنتور یا با پوسته و افزونه‌ی اختصاصی در وردپرس ساخته می‌شوند.</li>
+            <li>همه‌ی بخش‌های سایت در وردپرس و پنل مدیریت قابل مشاهده و دسترسی است و می‌توانید خودتان آن را ویرایش کنید.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div>
+      <h2>فروشگاه بعدی را با هم بسازیم.</h2>
+      <p>برای طراحی سایت جدید، بازطراحی یا مدیریت و سئوی سایت فعلی‌تان پیام بدهید.</p>
+    </div>
+    <div class="ways">
+      <div class="way"><div><small>تلگرام</small><a class="v" href="https://t.me/Mohadeseh0831" target="_blank" rel="noopener">@Mohadeseh0831</a></div><button class="copy" type="button" data-copy="@Mohadeseh0831">کپی</button></div>
+      <div class="way"><div><small>ایمیل</small><a class="v" href="mailto:mohitvk644@gmail.com">mohitvk644@gmail.com</a></div><button class="copy" type="button" data-copy="mohitvk644@gmail.com">کپی</button></div>
+      <div class="way"><div><small>تلفن</small><span class="v">+98 991 159 5827</span></div><button class="copy" type="button" data-copy="+989911595827">کپی</button></div>
+    </div>
+  </section>
+  <footer><span>© ۱۴۰۵ محدثه توکلی</span><span>طراحی و مدیریت وب‌سایت وردپرس · تهران</span></footer>
+</div>
+
+<dialog id="lb" aria-labelledby="lbTitle">
+  <div class="lb">
+    <div class="browser"><div class="bar"><i></i><i></i><i></i></div><div class="screen" id="lbScreen" tabindex="0"></div></div>
+    <div class="lb-side">
+      <button class="lb-close" id="lbClose" type="button">بستن ✕</button>
+      <div><h3 id="lbTitle"></h3><p id="lbDesc"></p></div>
+      <dl id="lbMeta"></dl>
+      <div class="lb-phone" id="lbPhone" tabindex="0"></div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+const LIVE = [
+  { title:"استاد جوهر", desc:"فروشگاه آنلاین جوهر، استامپ و لیقه‌ی مهر با دسته‌بندی محصولات، پرفروش‌ها و بلاگ.",
+    role:"طراحی، اجرا و سئو", platform:"WordPress · WooCommerce", status:"آنلاین و فعال", year:"۱۴۰۵",
+    desk:"img/johar-desk.webp", mob:"img/johar-mob.webp" },
+  { title:"استاد مهر", desc:"فروشگاه آنلاین طراحی و ساخت مهر. سایت روی سایت‌ساز ساخته شده و طراحی صفحه‌های داخلی و سئوی آن با من بوده است.",
+    role:"طراحی صفحات داخلی و سئو", platform:"سایت‌ساز دیجیفای", status:"آنلاین و فعال", year:"۱۴۰۵",
+    desk:"img/mehr-desk.webp", mob:"img/mehr-mob.webp" }
+];
+const WORK = [
+  { cat:"biz", title:"باشگاه ویونا فیتنس", desc:"سایت باشگاه تخصصی بانوان با معرفی کلاس‌ها، مربیان، پلن‌های عضویت، رزرو سانس و نظرات اعضا.", tags:["ورزشی","رزرو آنلاین","لوکس"], desk:"img/viona-desk.webp", mob:"img/viona-mob.webp", st:"#EFE6EE" },
+  { cat:"shop", title:"فروشگاه عطر", desc:"انتخاب عطر بر اساس حس‌وحال، برندهای منتخب، مشاوره‌ی آنلاین و مجله.", tags:["فروشگاهی","لوکس"], desk:"img/perfume-desk.webp", mob:"img/perfume-mob.webp", st:"#F3E4E8" },
+  { cat:"biz", title:"کلینیک دندان‌پزشکی", desc:"نوبت‌دهی آنلاین مرحله‌به‌مرحله، خدمات و تعرفه‌ها، پیگیری نوبت و معرفی پزشکان.", tags:["نوبت‌دهی","شرکتی"], desk:"img/dental-desk.webp", mob:"img/dental-mob.webp", st:"#E8EEFB" },
+  { cat:"shop", title:"فروشگاه کتونی", desc:"کفش و کتونی با دسته‌بندی، پرفروش‌ها، نظرات مشتریان و مجله‌ی استایل.", tags:["فروشگاهی","موبایل‌محور"], desk:"img/katoni-desk.webp", mob:"img/katoni-mob.webp", st:"#DCE6DD" },
+  { cat:"shop", title:"فروشگاه قهوه", desc:"سفارش قهوه با دسته‌بندی دانه‌ها، محصولات ویژه و داستان برند؛ طراحی موبایل‌محور.", tags:["فروشگاهی","موبایل‌محور"], mob:"img/coffee-mob.webp", st:"#F3E6DA" }
+];
+
+/* scroll a tall image inside its fixed-height box on hover */
+function wirePhone(host, box){
+  const img = box.querySelector('img'); if(!img) return;
+  const go = ()=>{ const d = img.offsetHeight - box.offsetHeight; img.style.transform = `translateY(-${Math.max(0,d)}px)`; };
+  const back = ()=>{ img.style.transform = ''; };
+  host.addEventListener('mouseenter',go); host.addEventListener('mouseleave',back);
+  host.addEventListener('focusin',go); host.addEventListener('focusout',back);
+}
+const frame = inner => `<div class="browser"><div class="bar"><i></i><i></i><i></i></div><div class="screen">${inner}</div></div>`;
+
+const cases = document.getElementById('cases');
+LIVE.forEach(p=>{
+  const el = document.createElement('article'); el.className='case';
+  el.innerHTML = `<div class="visual">${frame(`<img class="shot" src="${p.desk}" alt="صفحه‌ی اصلی ${p.title}" loading="lazy">`)}
+      <div class="phone"><img src="${p.mob}" alt="" loading="lazy"></div>
+      <button class="cover" type="button" aria-label="دیدن کامل ${p.title}"></button></div>
+    <div><span class="status">${p.status}</span><h3>${p.title}</h3><p>${p.desc}</p>
+      <dl class="role"><dt>نقش من</dt><dd>${p.role}</dd><dt>پلتفرم</dt><dd>${p.platform}</dd><dt>سال</dt><dd>${p.year}</dd></dl>
+      <button class="linkbtn" type="button">دیدن کامل دسکتاپ و موبایل</button></div>`;
+  const open = ()=>openLb(p,[["نقش من",p.role],["پلتفرم",p.platform],["وضعیت",p.status],["سال",p.year]]);
+  el.querySelector('.cover').addEventListener('click',open);
+  el.querySelector('.linkbtn').addEventListener('click',open);
+  cases.appendChild(el);
+  wirePhone(el.querySelector('.visual'), el.querySelector('.phone'));
+});
+
+const grid = document.getElementById('grid');
+WORK.forEach(p=>{
+  const el = document.createElement('article'); el.className='tile'; el.dataset.cat=p.cat;
+  const inner = p.desk ? `<img class="shot" src="${p.desk}" alt="پیش‌نمایش ${p.title}" loading="lazy">`
+    : `<div class="stage" style="--st:${p.st}"><div class="pf"><img src="${p.mob}" alt="پیش‌نمایش ${p.title}" loading="lazy"></div></div>`;
+  const phone = (p.desk && p.mob) ? `<div class="phone"><img src="${p.mob}" alt="نسخه‌ی موبایل ${p.title}" loading="lazy"></div>` : '';
+  el.innerHTML = `<div class="visual">${frame(inner)}${phone}<button class="cover" type="button" aria-label="دیدن کامل ${p.title}"></button></div>
+    <div class="tile-meta"><div><h3>${p.title}</h3><p>${p.desc}</p><div class="tags">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div></div>
+    <span class="kind">${p.desk ? "دسکتاپ + موبایل" : "طراحی موبایل"}</span></div>`;
+  el.querySelector('.cover').addEventListener('click',()=>openLb(p,[["پلتفرم","WordPress"],["نوع",p.tags.join("، ")],["سال","۱۴۰۵"],["وضعیت","نمونه‌طراحی"]]));
+  grid.appendChild(el);
+  wirePhone(el, el.querySelector(p.desk ? '.phone' : '.pf'));
+});
+
+document.querySelector('.toolbar').addEventListener('click',e=>{
+  const b = e.target.closest('button'); if(!b) return;
+  document.querySelectorAll('.toolbar button').forEach(x=>x.setAttribute('aria-pressed', String(x===b)));
+  grid.querySelectorAll('.tile').forEach(c=>{ c.hidden = !(b.dataset.f==='all' || c.dataset.cat===b.dataset.f); });
+});
+
+const lb = document.getElementById('lb');
+function openLb(p, meta){
+  const scr = document.getElementById('lbScreen'), ph = document.getElementById('lbPhone');
+  scr.innerHTML = p.desk ? `<img src="${p.desk}" alt="نسخه‌ی دسکتاپ ${p.title}">`
+    : `<div style="background:${p.st};padding:24px 0"><img src="${p.mob}" alt="نسخه‌ی موبایل ${p.title}" style="max-width:380px;margin:auto;border-radius:12px"></div>`;
+  ph.innerHTML = p.mob ? `<img src="${p.mob}" alt="نسخه‌ی موبایل ${p.title}">` : '';
+  ph.style.display = (p.mob && p.desk) ? '' : 'none';
+  scr.scrollTop = 0; ph.scrollTop = 0;
+  document.getElementById('lbTitle').textContent = p.title;
+  document.getElementById('lbDesc').textContent = p.desc;
+  document.getElementById('lbMeta').innerHTML = meta.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join('');
+  if (typeof lb.showModal === 'function') lb.showModal(); else lb.setAttribute('open','');
+}
+document.getElementById('lbClose').addEventListener('click',()=>lb.close());
+lb.addEventListener('click',e=>{ if(e.target===lb) lb.close(); });
+
+document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',async()=>{
+  try{ await navigator.clipboard.writeText(b.dataset.copy); b.textContent='کپی شد'; }
+  catch(_){ b.textContent='کپی نشد'; }
+  setTimeout(()=>{ b.textContent='کپی'; },1600);
+}));
+</script>
+</body>
+</html>
