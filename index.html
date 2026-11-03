@@ -4,270 +4,340 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>محدثه توکلی | طراح وب‌سایت و مدیر فروشگاه اینترنتی</title>
+<meta name="description" content="پورتفولیوی محدثه توکلی؛ طراحی و پیاده‌سازی وب‌سایت‌های وردپرسی و مدیریت فروشگاه اینترنتی. آماده‌ی همکاری پروژه‌ای و دورکاری.">
+<meta property="og:title" content="محدثه توکلی | طراح وب‌سایت و مدیر فروشگاه اینترنتی">
+<meta property="og:description" content="نمونه‌طراحی‌های شخصی و تجربه‌ی مدیریت وب‌سایت‌های فعال.">
+<meta property="og:image" content="img/viona-desk.webp">
+<meta name="theme-color" content="#FAF7F1">
+<link rel="icon" href="img/me.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@500;600;700&family=Vazirmatn:wght@300;400;500;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap">
 <style>
-/* Layout: a designer's spec sheet. Real screenshots carry red "redline" pins that name the work behind each part of the page; quiet RTL grid around them. */
+/* Palette: warm cream paper, deep navy ink, olive accent used sparingly. */
 :root{
-  --paper:#EEF0F3;
+  --bg:#FAF7F1;
+  --bg-2:#F2EDE3;
   --surface:#FFFFFF;
-  --ink:#131A2E;
-  --muted:#5B6378;
-  --line:#D6DAE2;
-  --red:#E0393E;          /* redline: annotations, key calls to action */
-  --red-ink:#FFFFFF;
-  --ok:#17845A;
-  --frame:#DFE3EA;
-  --shadow:0 24px 50px -30px rgba(19,26,46,.45);
-  --display:"Markazi Text","Vazirmatn",Tahoma,serif;
-  --body:"Vazirmatn",Tahoma,"Segoe UI",sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --navy:#15223D;
+  --navy-2:#22335A;
+  --text:#2C3345;
+  --muted:#686F7F;
+  --line:#E7E1D5;
+  --olive:#5C6E33;
+  --olive-soft:#EDF0E0;
+  --on-navy:#F5F2EA;
+  --olive-on-navy:#C6D59A;
+  --live:#2F8A5B;
+  --sh-1:0 1px 2px rgba(21,34,61,.04),0 10px 28px -20px rgba(21,34,61,.22);
+  --sh-2:0 2px 6px rgba(21,34,61,.05),0 28px 50px -28px rgba(21,34,61,.34);
+  --font:"Vazirmatn",Tahoma,"Segoe UI",sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);
   color-scheme:light;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --paper:#0E1220;--surface:#171C2E;--ink:#E9ECF4;--muted:#99A1B7;--line:#2A3148;
-  --red:#FF5A5F;--red-ink:#16080A;--ok:#43C68E;--frame:#232A40;
-  --shadow:0 24px 50px -30px rgba(0,0,0,.8);color-scheme:dark}}
-:root[data-theme="dark"]{
-  --paper:#0E1220;--surface:#171C2E;--ink:#E9ECF4;--muted:#99A1B7;--line:#2A3148;
-  --red:#FF5A5F;--red-ink:#16080A;--ok:#43C68E;--frame:#232A40;
-  --shadow:0 24px 50px -30px rgba(0,0,0,.8);color-scheme:dark}
-
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.85;
-  padding-inline:max(16px,env(safe-area-inset-left,0px))}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.9 var(--font);-webkit-font-smoothing:antialiased;overflow-x:clip}
 img{max-width:100%;display:block}
 a{color:inherit}
-.wrap{max-width:1160px;margin-inline:auto}
-:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:6px}
+h1,h2,h3,h4{color:var(--navy);font-weight:800}
+.wrap{max-width:1180px;margin-inline:auto;padding-inline:clamp(18px,4vw,32px)}
+:focus-visible{outline:2px solid var(--olive);outline-offset:3px;border-radius:8px}
 .ltr{direction:ltr;unicode-bidi:isolate}
-.mono{font-family:var(--mono);font-size:.78rem;letter-spacing:.01em}
+.skip{position:absolute;inset-inline-start:12px;top:-60px;background:var(--navy);color:var(--on-navy);padding:8px 14px;border-radius:8px;z-index:100;text-decoration:none}
+.skip:focus{top:12px}
 
-/* header */
-header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:20px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800}
-.brand img{width:36px;height:36px;border-radius:50%;object-fit:cover}
-nav{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
-nav a{text-decoration:none;color:var(--muted);font-weight:500;font-size:.95rem}
-nav a:hover{color:var(--ink)}
-.avail{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;color:var(--ok);font-weight:700}
-.avail::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;box-shadow:0 0 0 4px color-mix(in srgb,currentColor 20%,transparent)}
+/* ---------- header ---------- */
+.site-header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(1.2) blur(12px);-webkit-backdrop-filter:saturate(1.2) blur(12px);border-bottom:1px solid transparent;transition:border-color .3s}
+.site-header.scrolled{border-bottom-color:var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;height:72px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;color:var(--navy);font-size:1.02rem}
+.brand img{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid var(--surface);box-shadow:var(--sh-1)}
+.nav{display:flex;align-items:center;gap:2px}
+.nav a{padding:6px 13px;border-radius:999px;text-decoration:none;color:var(--muted);font-weight:500;font-size:.93rem;transition:color .25s,background-color .25s}
+.nav a:hover{color:var(--navy);background:var(--bg-2)}
+.nav a.nav-cta{margin-inline-start:8px;background:var(--navy);color:var(--on-navy);font-weight:600;padding-inline:18px}
+.nav a.nav-cta:hover{background:var(--navy-2)}
+.menu-btn{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:12px;background:var(--surface);cursor:pointer;align-items:center;justify-content:center;color:var(--navy)}
+.menu-btn svg{width:20px;height:20px}
+.menu-btn .x{display:none}
+.menu-btn[aria-expanded="true"] .x{display:block}
+.menu-btn[aria-expanded="true"] .bars{display:none}
 
-/* hero */
-.hero{display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:center;padding-block:40px 64px}
-.who{display:flex;align-items:center;gap:14px;margin-bottom:18px}
-.who img{width:64px;height:64px;border-radius:50%;object-fit:cover;border:3px solid var(--surface);box-shadow:var(--shadow)}
-.who b{display:block;font-size:1.05rem}
-.who span{color:var(--muted);font-size:.9rem}
-h1{font-family:var(--display);font-weight:700;font-size:clamp(2.6rem,5.4vw,4.3rem);line-height:1.12;margin:0 0 18px;text-wrap:balance}
-h1 em{font-style:normal;color:var(--red)}
-.lede{color:var(--muted);margin:0 0 26px;max-width:46ch}
-.ctas{display:flex;gap:12px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:.95rem;padding:10px 20px;border-radius:10px;border:1px solid transparent;cursor:pointer;font-family:inherit}
-.btn.primary{background:var(--red);color:var(--red-ink)}
-.btn.primary:hover{filter:brightness(1.06)}
-.btn.ghost{border-color:var(--line);color:var(--ink);background:transparent}
-.btn.ghost:hover{border-color:var(--ink)}
-.facts{display:flex;gap:32px;margin-top:34px;padding-top:22px;border-top:1px solid var(--line);flex-wrap:wrap}
-.facts b{display:block;font-family:var(--display);font-size:2.2rem;line-height:1;font-weight:700}
-.facts span{color:var(--muted);font-size:.85rem}
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 24px;border-radius:12px;border:1.5px solid transparent;font:700 .97rem var(--font);text-decoration:none;cursor:pointer;transition:background-color .25s,color .25s,border-color .25s,box-shadow .25s,transform .25s var(--ease)}
+.btn svg{width:18px;height:18px;flex:none;transition:transform .25s var(--ease)}
+.btn:hover svg{transform:translateX(-3px)}
+.btn-primary{background:var(--navy);color:var(--on-navy)}
+.btn-primary:hover{background:var(--navy-2);box-shadow:0 12px 24px -14px rgba(21,34,61,.6)}
+.btn-outline{background:var(--surface);border-color:var(--line);color:var(--navy)}
+.btn-outline:hover{border-color:var(--olive);color:var(--olive)}
+.btn-sm{min-height:42px;padding:0 18px;font-size:.9rem;border-radius:10px}
 
-/* browser frame */
-.browser{background:var(--frame);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
-.bar{display:flex;align-items:center;gap:6px;padding:9px 12px;direction:ltr}
-.bar i{width:9px;height:9px;border-radius:50%;background:var(--line);display:block}
-.screen{position:relative;overflow:hidden;background:#fff}
-.screen img.shot{width:100%;height:100%;object-fit:cover;object-position:top;transition:object-position 7s cubic-bezier(.45,.05,.4,1)}
+/* ---------- hero ---------- */
+.hero{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(36px,5vw,72px);align-items:center;padding-block:clamp(36px,6vw,80px) clamp(56px,8vw,104px)}
+.badge{display:inline-flex;align-items:center;gap:9px;padding:5px 14px;border-radius:999px;background:var(--olive-soft);color:var(--olive);font-size:.86rem;font-weight:600}
+.badge i{position:relative;width:8px;height:8px;border-radius:50%;background:currentColor}
+.badge i::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1.5px solid currentColor;opacity:0;animation:ping 2.6s var(--ease) infinite}
+@keyframes ping{0%{transform:scale(.6);opacity:.7}80%,100%{transform:scale(1.5);opacity:0}}
+.hero h1{font-size:clamp(2.1rem,4.4vw,3.45rem);line-height:1.32;margin:20px 0 12px;letter-spacing:-.01em;text-wrap:balance}
+.hero h1 span{color:var(--olive)}
+.stack{margin:0 0 18px;font-size:.82rem;color:var(--muted);letter-spacing:.02em;text-align:right}
+.intro{font-size:1.08rem;color:var(--muted);margin:0 0 30px;max-width:46ch}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.facts{display:flex;gap:clamp(24px,4vw,44px);margin-top:40px;padding-top:24px;border-top:1px solid var(--line)}
+.facts b{display:block;font-size:2rem;line-height:1.1;color:var(--navy);font-weight:800}
+.facts span{font-size:.86rem;color:var(--muted)}
 
-/* annotated hero shot */
-.spec{position:relative}
-.specbox{position:relative}
-.spec .screen{aspect-ratio:1100/700}
-.phone{position:absolute;left:-18px;bottom:-26px;width:23%;aspect-ratio:9/18;border:6px solid #12151F;border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 18px 30px -12px rgba(0,0,0,.5)}
-.phone img{width:100%}
-.pin{position:absolute;width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;font:700 .8rem/26px var(--body);text-align:center;
-  box-shadow:0 0 0 4px color-mix(in srgb,var(--red) 28%,transparent);transform:translate(50%,-50%);z-index:2}
-.legend{list-style:none;margin:52px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px 24px}
-.legend li{display:flex;gap:10px;align-items:baseline;font-size:.9rem}
-.legend b{flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--red);color:var(--red);font-size:.75rem;display:grid;place-items:center;line-height:1}
-.legend .mono{color:var(--muted)}
+.showcase{position:relative;margin:0;padding:clamp(18px,3vw,30px) clamp(14px,2.4vw,24px) clamp(16px,2.4vw,24px)}
+.devices{position:relative;z-index:1;padding:0 5% 9% 11%}
+.showcase::before{content:"";position:absolute;inset:0;background:linear-gradient(160deg,var(--bg-2),color-mix(in srgb,var(--olive-soft) 70%,var(--bg)));border-radius:28px;z-index:0}
+.laptop{position:relative;z-index:1}
+.laptop .lid{background:#1A2238;border-radius:16px 16px 6px 6px;padding:2.2% 2.2% 2.8%;box-shadow:var(--sh-2)}
+.laptop .scr{aspect-ratio:16/10;border-radius:6px;overflow:hidden;background:#fff}
+.laptop .scr img{width:100%;height:100%;object-fit:cover;object-position:top;transition:object-position 9s cubic-bezier(.45,.05,.35,1)}
+.showcase:hover .laptop .scr img{object-position:bottom}
+.laptop .base{position:relative;height:clamp(10px,1.5vw,16px);margin-inline:-5%;background:linear-gradient(180deg,#ECE8E0,#CDC7BB);border-radius:0 0 18px 18px;box-shadow:0 16px 24px -18px rgba(21,34,61,.5)}
+.laptop .base::after{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:15%;height:45%;background:#BEB8AC;border-radius:0 0 8px 8px}
+.device-phone{position:absolute;z-index:2;left:0;bottom:0;width:21%;aspect-ratio:9/19;border:clamp(4px,.55vw,7px) solid #141A2B;border-radius:clamp(16px,2.2vw,26px);overflow:hidden;background:#fff;box-shadow:0 24px 40px -18px rgba(21,34,61,.55)}
+.device-phone img{width:100%;transition:transform 9s cubic-bezier(.45,.05,.35,1)}
+.hero .device-phone{animation:float 7s ease-in-out infinite}
+@keyframes float{50%{translate:0 -7px}}
+.showcase figcaption{position:relative;z-index:1;margin-top:clamp(10px,1.6vw,16px);display:flex;align-items:center;gap:10px;font-size:.86rem;color:var(--muted);flex-wrap:wrap}
 
-/* section heads */
-section.sec{padding-block:72px 8px}
-.head{display:grid;grid-template-columns:200px 1fr;gap:24px;margin-bottom:36px;align-items:baseline}
-.head .mono{color:var(--red)}
-.head h2{font-family:var(--display);font-weight:700;font-size:clamp(2rem,3.6vw,2.7rem);line-height:1.2;margin:0;text-wrap:balance}
-.head p{margin:6px 0 0;color:var(--muted);max-width:60ch}
+/* ---------- sections ---------- */
+.section{padding-block:clamp(64px,9vw,112px)}
+.band{background:var(--surface);border-block:1px solid var(--line)}
+.sec-head{max-width:660px;margin-bottom:clamp(32px,4vw,52px)}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.84rem;font-weight:700;color:var(--olive)}
+.eyebrow::before{content:"";width:24px;height:2px;border-radius:2px;background:currentColor}
+.sec-head h2{font-size:clamp(1.75rem,3.2vw,2.45rem);line-height:1.4;margin:10px 0 10px;text-wrap:balance}
+.sec-head p{margin:0;color:var(--muted)}
+.tag{display:inline-flex;align-items:center;gap:7px;width:fit-content;padding:2px 12px;border-radius:999px;font-size:.78rem;font-weight:600;background:var(--olive-soft);color:var(--olive)}
+.tag.real{background:#E7F2EC;color:var(--live)}
+.tag.real::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
 
-/* process */
-.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);border-top:2px solid var(--ink)}
-.steps li{padding:18px 16px 4px 0;border-inline-start:1px solid var(--line);display:flex;flex-direction:column;gap:8px;min-width:0}
-.steps li:first-child{border-inline-start:none;padding-inline-start:0}
-.steps .n{font-family:var(--mono);font-size:.75rem;color:var(--red)}
-.steps h3{margin:0;font-size:1.05rem}
-.steps p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.7}
-.steps .tools{display:flex;gap:4px;flex-wrap:wrap;margin-top:auto;padding-top:6px}
-.chip{font-family:var(--mono);font-size:.72rem;background:var(--surface);border:1px solid var(--line);padding:1px 8px;border-radius:6px;direction:ltr;white-space:nowrap}
+/* ---------- about ---------- */
+.about{display:grid;grid-template-columns:300px 1fr;gap:clamp(32px,5vw,64px);align-items:start}
+.profile{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:28px;text-align:center;box-shadow:var(--sh-1)}
+.profile img{width:124px;height:124px;border-radius:50%;object-fit:cover;margin:0 auto 16px;border:4px solid var(--bg);box-shadow:0 0 0 1px var(--line)}
+.profile h3{margin:0;font-size:1.2rem}
+.profile p{margin:4px 0 16px;color:var(--muted);font-size:.9rem}
+.profile .tag{margin-inline:auto}
+.about-text p{margin:0 0 16px;font-size:1.04rem;max-width:62ch}
+.about-text p:first-child{font-size:1.15rem;color:var(--navy);font-weight:500}
+.highlights{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.highlights li{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:.93rem;font-weight:500;color:var(--navy);line-height:1.7}
+.highlights svg{flex:none;width:22px;height:22px;color:var(--olive);margin-top:1px}
 
-/* live case studies */
-.case{display:grid;grid-template-columns:1.35fr 1fr;gap:40px;align-items:center;padding-block:28px;border-bottom:1px solid var(--line)}
-.case:last-child{border-bottom:none}
-.case .visual{position:relative;cursor:pointer;margin-bottom:26px}
-.case .screen{height:380px}
-.case .visual:hover .screen img.shot,.case .visual:focus-within .screen img.shot{object-position:bottom}
-.case .phone{width:22%;left:-14px;bottom:-26px}
-.case .phone img{transition:transform 7s cubic-bezier(.45,.05,.4,1)}
-.status{display:inline-flex;align-items:center;gap:7px;font-size:.8rem;font-weight:700;color:var(--ok);border:1px solid currentColor;padding:1px 10px;border-radius:999px}
-.status::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
-.case h3{font-family:var(--display);font-size:2.1rem;font-weight:700;margin:10px 0 6px;line-height:1.2}
-.case p{margin:0 0 18px;color:var(--muted)}
-.role{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin:0 0 20px;font-size:.9rem}
-.role dt{color:var(--muted)}
-.role dd{margin:0;font-weight:500}
-.linkbtn{all:unset;cursor:pointer;color:var(--red);font-weight:700;font-size:.92rem;border-bottom:1.5px solid currentColor}
-.cover{all:unset;position:absolute;inset:0;cursor:pointer;z-index:3;border-radius:12px}
-.cover:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+/* ---------- skills ---------- */
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.skill{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:20px 20px 18px;transition:border-color .3s,transform .3s var(--ease),background-color .3s}
+.skill:hover{border-color:color-mix(in srgb,var(--olive) 45%,var(--line));transform:translateY(-3px);background:var(--surface)}
+.skill .n{font-size:.78rem;font-weight:700;color:var(--olive)}
+.skill h3{margin:6px 0 2px;font-size:1.05rem}
+.skill p{margin:0;font-size:.86rem;color:var(--muted);line-height:1.7}
+.sub-title{margin:clamp(44px,6vw,64px) 0 18px;font-size:1.12rem}
+.services{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);border-top:1.5px solid var(--navy)}
+.services li{padding:16px 16px 4px 0;border-inline-start:1px solid var(--line);min-width:0}
+.services li:first-child{border-inline-start:none;padding-inline-start:0}
+.services h4{margin:0 0 4px;font-size:.98rem}
+.services p{margin:0;font-size:.86rem;color:var(--muted);line-height:1.7}
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:clamp(36px,5vw,52px)}
+.tool-group{border:1px dashed var(--line);border-radius:16px;padding:18px}
+.tool-group h4{margin:0 0 4px;font-size:.92rem}
+.tool-group p{margin:0 0 12px;font-size:.82rem;color:var(--muted);line-height:1.6}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;font-size:.8rem;padding:2px 11px;border-radius:999px;background:var(--bg);border:1px solid var(--line);color:var(--text);white-space:nowrap}
 
-/* design grid */
-.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
-.toolbar button{font:inherit;font-size:.88rem;border:1px solid var(--line);background:transparent;color:var(--muted);padding:5px 16px;border-radius:999px;cursor:pointer}
-.toolbar button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px 28px}
-.tile{display:flex;flex-direction:column;gap:14px;min-width:0}
-.tile .visual{position:relative;margin-bottom:22px}
-.tile .phone{width:21%;left:-12px;bottom:-22px;border-width:5px;border-radius:18px}
-.tile .phone img{transition:transform 7s cubic-bezier(.45,.05,.4,1)}
-.tile .screen{height:300px}
-.tile:hover .screen img.shot,.tile:focus-within .screen img.shot{object-position:bottom}
-.tile .browser{transition:transform .35s ease}
-.tile:hover .browser{transform:translateY(-4px)}
-.stage{height:100%;display:flex;justify-content:center;padding-top:20px;background:var(--st)}
-.stage .pf{width:40%;max-width:160px;border:6px solid #12151F;border-bottom:none;border-radius:20px 20px 0 0;overflow:hidden;background:#fff}
-.stage .pf img{transition:transform 7s cubic-bezier(.45,.05,.4,1)}
-.tile-meta{display:flex;justify-content:space-between;gap:12px;align-items:start}
-.tile h3{margin:0;font-size:1.12rem}
-.tile p{margin:2px 0 0;color:var(--muted);font-size:.9rem;line-height:1.7}
-.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
-.tags span{font-size:.75rem;color:var(--muted);border:1px solid var(--line);padding:0 9px;border-radius:6px}
-.kind{font-family:var(--body);font-size:.75rem;color:var(--muted);white-space:nowrap;padding-top:4px}
+/* ---------- portfolio ---------- */
+.group + .group{margin-top:clamp(72px,9vw,104px);padding-top:clamp(48px,6vw,64px);border-top:1px solid var(--line)}
+.group-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px 32px;flex-wrap:wrap;margin-bottom:28px}
+.group-head h3{margin:8px 0 6px;font-size:clamp(1.3rem,2.4vw,1.6rem)}
+.group-head p{margin:0;color:var(--muted);max-width:62ch;font-size:.95rem}
+.filters{display:flex;gap:6px;flex-wrap:wrap}
+.filters button{font:500 .88rem var(--font);border:1px solid var(--line);background:var(--surface);color:var(--muted);padding:6px 16px;border-radius:999px;cursor:pointer;min-height:38px;transition:background-color .25s,color .25s,border-color .25s}
+.filters button:hover{border-color:var(--navy);color:var(--navy)}
+.filters button[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:var(--on-navy)}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--sh-1);transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s}
+.card:hover{transform:translateY(-4px);box-shadow:var(--sh-2)}
+.card[hidden]{display:none}
+.media{position:relative;height:300px;padding:26px 26px 0 16%;background:var(--st,#ECEEF2);overflow:hidden}
+.media .browser{height:100%;background:#fff;border-radius:10px 10px 0 0;overflow:hidden;box-shadow:0 14px 34px -20px rgba(21,34,61,.5)}
+.bar{display:flex;gap:5px;align-items:center;height:26px;padding-inline:12px;background:#F1F2F5;direction:ltr}
+.bar i{width:8px;height:8px;border-radius:50%;background:#D5D8DF}
+.media .shot{width:100%;height:calc(100% - 26px);object-fit:cover;object-position:top;transition:object-position 8s cubic-bezier(.45,.05,.35,1)}
+.card:hover .media .shot,.card:focus-within .media .shot{object-position:bottom}
+.media .device-phone{left:20px;bottom:auto;top:38%;width:22%;border-width:5px;border-radius:18px}
+.media .open{all:unset;position:absolute;inset:0;cursor:zoom-in;z-index:3}
+.media .open:focus-visible{outline:2px solid var(--olive);outline-offset:-4px;border-radius:22px}
+.card-body{display:flex;flex-direction:column;gap:10px;padding:22px 24px 24px;flex:1}
+.card h4{margin:0;font-size:1.25rem;line-height:1.5}
+.card p{margin:0;color:var(--muted);font-size:.93rem;line-height:1.8}
+.meta{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;margin:4px 0 0;padding-top:14px;border-top:1px solid var(--line);font-size:.88rem}
+.meta dt{color:var(--muted)}
+.meta dd{margin:0;color:var(--navy);font-weight:600}
+.card-foot{margin-top:auto;padding-top:10px;display:flex;gap:10px;flex-wrap:wrap}
+.card.featured{grid-column:1/-1;flex-direction:row}
+.card.featured .media{flex:1.35;height:430px}
+.card.featured .card-body{flex:1;justify-content:center;padding:32px}
+.card.featured .card-foot{margin-top:8px}
+.card.featured h4{font-size:1.6rem}
+.manage .card{background:color-mix(in srgb,var(--surface) 70%,var(--bg))}
+.note{display:flex;gap:10px;align-items:flex-start;margin-top:22px;padding:14px 18px;border-radius:14px;background:var(--surface);border:1px solid var(--line);font-size:.88rem;color:var(--muted)}
+.note svg{flex:none;width:20px;height:20px;color:var(--olive);margin-top:3px}
 
-/* resume */
-.cv{display:grid;grid-template-columns:1.45fr 1fr;gap:48px;align-items:start}
-.jobs{display:flex;flex-direction:column}
-.job{display:grid;grid-template-columns:150px 1fr;gap:20px;padding-block:22px;border-top:1px solid var(--line)}
-.job:first-child{border-top:2px solid var(--ink)}
-.when{color:var(--muted);font-size:.85rem;font-variant-numeric:tabular-nums}
-.job h3{margin:0;font-size:1.15rem}
-.where{margin:0 0 8px;color:var(--muted);font-size:.88rem}
-.job ul{margin:0;padding-inline-start:18px;display:flex;flex-direction:column;gap:3px}
-.job li::marker{color:var(--red)}
-.side{display:flex;flex-direction:column;gap:22px;min-width:0}
-.group h4{margin:0 0 10px;font-size:.95rem}
-.group .chips{display:flex;flex-wrap:wrap;gap:6px}
-.group .chip{font-size:.78rem;padding:2px 10px}
-.ai{background:var(--ink);color:var(--paper);border-radius:14px;padding:20px}
-.ai p{margin:0 0 12px;font-size:.88rem;opacity:.8;line-height:1.75}
-.ai .chip{background:transparent;color:var(--paper);border-color:color-mix(in srgb,var(--paper) 35%,transparent)}
-.edu{border-top:1px solid var(--line);padding-top:18px;font-size:.92rem}
-.edu b{display:block}
-.edu span{color:var(--muted)}
+/* ---------- experience ---------- */
+.timeline{display:grid;gap:18px}
+.exp{display:grid;grid-template-columns:200px 1fr;gap:clamp(18px,3vw,36px);background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:clamp(22px,3vw,32px)}
+.when{color:var(--olive);font-weight:700;font-size:.92rem}
+.where{display:block;color:var(--muted);font-size:.86rem;font-weight:400;margin-top:2px}
+.exp h3{margin:0 0 4px;font-size:1.2rem}
+.exp > div > p{margin:0;color:var(--muted);font-size:.93rem}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+.sub{background:var(--bg);border-radius:16px;padding:18px 20px}
+.sub h4{margin:6px 0 8px;font-size:1rem}
+ul.dots{margin:0;padding-inline-start:18px;display:flex;flex-direction:column;gap:4px;font-size:.92rem}
+ul.dots li::marker{color:var(--olive)}
+.exp.edu{align-items:center}
+.exp.edu h3{margin:0}
 
-
-/* faq */
-.faq{border-top:2px solid var(--ink)}
-.faq details{border-bottom:1px solid var(--line);padding-block:4px}
-.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:16px;font-weight:700;font-size:1.08rem}
+/* ---------- faq ---------- */
+.faq{max-width:860px;border-top:1.5px solid var(--navy)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:18px;font-weight:700;font-size:1.06rem;color:var(--navy)}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";flex:none;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--red);color:var(--red);display:grid;place-items:center;font-weight:500;line-height:1;transition:transform .2s}
+.faq summary::after{content:"+";flex:none;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--olive);color:var(--olive);display:grid;place-items:center;font-weight:500;line-height:1;transition:transform .25s var(--ease)}
 .faq details[open] summary::after{transform:rotate(45deg)}
 .faq .a{padding:0 0 20px;color:var(--muted);max-width:70ch}
 .faq .a p{margin:0 0 10px}
-.faq .a ul{margin:0;padding-inline-start:18px;display:flex;flex-direction:column;gap:4px}
-.faq .a li::marker{color:var(--red)}
 
-/* contact */
-.contact{margin-block:88px 28px;background:var(--ink);color:var(--paper);border-radius:20px;padding:clamp(28px,5vw,56px);display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center}
-.contact h2{font-family:var(--display);font-weight:700;font-size:clamp(2.2rem,4.5vw,3.4rem);line-height:1.15;margin:0 0 10px;text-wrap:balance}
-.contact p{margin:0;opacity:.75;max-width:44ch}
+/* ---------- contact ---------- */
+.contact{position:relative;overflow:hidden;background:var(--navy);color:var(--on-navy);border-radius:28px;padding:clamp(30px,6vw,68px);display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(28px,5vw,56px);align-items:center}
+.contact::before{content:"";position:absolute;width:520px;height:520px;left:-180px;top:-220px;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--olive-on-navy) 22%,transparent),transparent);pointer-events:none}
+.contact > *{position:relative}
+.contact .eyebrow{color:var(--olive-on-navy)}
+.contact h2{color:#fff;font-size:clamp(1.8rem,3.6vw,2.7rem);line-height:1.4;margin:12px 0 12px;text-wrap:balance}
+.contact p{margin:0 0 28px;opacity:.78;max-width:46ch}
+.btn-light{background:var(--olive-on-navy);color:var(--navy)}
+.btn-light:hover{background:#D6E2B0;box-shadow:0 14px 28px -16px rgba(0,0,0,.6)}
 .ways{display:flex;flex-direction:column;gap:10px}
-.way{display:flex;justify-content:space-between;align-items:center;gap:12px;border:1px solid color-mix(in srgb,var(--paper) 22%,transparent);border-radius:12px;padding:10px 14px}
+.way{display:flex;justify-content:space-between;align-items:center;gap:12px;border:1px solid color-mix(in srgb,var(--on-navy) 18%,transparent);background:color-mix(in srgb,var(--on-navy) 4%,transparent);border-radius:14px;padding:12px 16px;transition:border-color .25s}
+.way:hover{border-color:color-mix(in srgb,var(--on-navy) 40%,transparent)}
 .way small{display:block;opacity:.6;font-size:.78rem}
-.way .v{font-family:var(--mono);font-size:.92rem;direction:ltr;unicode-bidi:isolate}
-.way a.v{text-decoration:none}
+.way .v{font-size:.98rem;direction:ltr;unicode-bidi:isolate;text-decoration:none;font-weight:500}
 .way a.v:hover{text-decoration:underline}
-.copy{font:inherit;font-size:.8rem;background:transparent;color:var(--paper);border:1px solid color-mix(in srgb,var(--paper) 30%,transparent);border-radius:8px;padding:3px 12px;cursor:pointer;white-space:nowrap}
-.copy:hover{border-color:var(--paper)}
-footer{color:var(--muted);font-size:.82rem;padding-block:0 32px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.copy{font:500 .8rem var(--font);background:transparent;color:var(--on-navy);border:1px solid color-mix(in srgb,var(--on-navy) 30%,transparent);border-radius:9px;padding:6px 14px;cursor:pointer;white-space:nowrap;min-height:36px;transition:background-color .25s,border-color .25s}
+.copy:hover{border-color:var(--on-navy);background:color-mix(in srgb,var(--on-navy) 8%,transparent)}
+footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:28px 36px;color:var(--muted);font-size:.84rem}
 
-/* lightbox */
-dialog{border:none;padding:0;background:transparent;max-width:min(1120px,94vw);width:100%;color:var(--ink)}
-dialog::backdrop{background:rgba(8,10,18,.75);backdrop-filter:blur(4px)}
-.lb{background:var(--surface);border-radius:16px;padding:20px;display:grid;grid-template-columns:1fr 250px;gap:24px;max-height:90vh}
-.lb .screen{height:min(66vh,600px);overflow-y:auto}
-.lb .screen img{width:100%}
+/* ---------- lightbox ---------- */
+dialog{border:none;padding:0;background:transparent;width:100%;max-width:min(1120px,94vw);color:var(--text)}
+dialog::backdrop{background:rgba(12,18,32,.72);backdrop-filter:blur(4px)}
+.lb{background:var(--surface);border-radius:20px;padding:20px;display:grid;grid-template-columns:1fr 260px;gap:24px;max-height:90vh}
+.lb-screen{height:min(68vh,620px);overflow-y:auto;border-radius:12px;border:1px solid var(--line);background:#fff}
 .lb-side{display:flex;flex-direction:column;gap:14px;min-width:0;overflow-y:auto}
-.lb-side h3{margin:0;font-family:var(--display);font-size:1.8rem;line-height:1.2}
-.lb-side p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.75}
-.lb-phone{width:160px;height:300px;border:7px solid #12151F;border-radius:24px;overflow-y:auto;align-self:center;background:#fff;flex:none}
-.lb-close{font:inherit;align-self:flex-end;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:8px;padding:3px 14px;cursor:pointer}
+.lb-side h3{margin:0;font-size:1.4rem;line-height:1.5}
+.lb-side p{margin:4px 0 0;color:var(--muted);font-size:.9rem;line-height:1.8}
 .lb-side dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:.86rem}
-.lb-side dt{color:var(--muted)}.lb-side dd{margin:0}
+.lb-side dt{color:var(--muted)}
+.lb-side dd{margin:0;color:var(--navy);font-weight:600}
+.lb-phone{width:150px;height:300px;flex:none;align-self:center;border:6px solid #141A2B;border-radius:24px;overflow-y:auto;background:#fff}
+.lb-close{align-self:flex-end;font:500 .88rem var(--font);border:1px solid var(--line);background:transparent;color:var(--navy);border-radius:10px;padding:6px 14px;cursor:pointer;min-height:38px}
+.lb-close:hover{border-color:var(--navy)}
 
-@media (max-width:960px){
-  .hero,.case,.cv,.contact{grid-template-columns:1fr}
-  .hero{gap:56px}
-  .steps{grid-template-columns:1fr 1fr}
-  .steps li{border-inline-start:none;border-top:1px solid var(--line);padding:16px 0}
-  .steps li:nth-child(even){padding-inline-start:16px;border-inline-start:1px solid var(--line)}
-  .head{grid-template-columns:1fr;gap:6px}
+/* ---------- reveal on scroll ---------- */
+.js .reveal{opacity:0;translate:0 18px;transition:opacity .8s var(--ease),translate .8s var(--ease)}
+.js .reveal.in{opacity:1;translate:none}
+.js .card.reveal{transition:opacity .8s var(--ease),translate .8s var(--ease),transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s}
+
+/* ---------- responsive ---------- */
+@media (max-width:1000px){
+  .skills{grid-template-columns:repeat(2,1fr)}
+  .services{grid-template-columns:1fr 1fr}
+  .services li{border-inline-start:none;border-top:1px solid var(--line);padding:14px 0}
+  .services li:first-child{border-top:none}
+  .services li:nth-child(even){padding-inline-start:16px;border-inline-start:1px solid var(--line)}
+  .services li:nth-child(2){border-top:none}
+  .tools{grid-template-columns:1fr 1fr}
+}
+@media (max-width:900px){
+  .menu-btn{display:inline-flex}
+  .nav{position:absolute;top:calc(100% + 6px);inset-inline:clamp(12px,4vw,24px);flex-direction:column;align-items:stretch;gap:2px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:10px;box-shadow:var(--sh-2);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .25s,transform .25s var(--ease),visibility .25s}
+  .nav.open{opacity:1;visibility:visible;transform:none}
+  .nav a{padding:12px 16px;font-size:1rem;border-radius:12px}
+  .nav a.nav-cta{margin:6px 0 0;text-align:center}
+  .hero{grid-template-columns:1fr}
+  .about{grid-template-columns:1fr}
+  .profile{display:grid;grid-template-columns:auto 1fr;gap:4px 18px;text-align:start;align-items:center;padding:20px}
+  .profile img{width:84px;height:84px;margin:0;grid-row:span 3}
+  .profile p{margin:0}
+  .profile .tag{margin:4px 0 0}
+  .card.featured{flex-direction:column}
+  .card.featured .media{height:340px;flex:none}
+  .card.featured .card-body{padding:22px 24px 24px}
+  .exp{grid-template-columns:1fr;gap:10px}
+  .contact{grid-template-columns:1fr}
   .lb{grid-template-columns:1fr;overflow-y:auto}
   .lb-phone{display:none}
 }
-@media (max-width:600px){
-  .grid{grid-template-columns:1fr}
-  .legend{grid-template-columns:1fr}
-  .steps{grid-template-columns:1fr}
-  .steps li:nth-child(even){padding-inline-start:0;border-inline-start:none}
-  .case .screen{height:260px}
-  .job{grid-template-columns:1fr;gap:4px}
-  nav a:not(.avail){display:none}
-  .pin{width:22px;height:22px;line-height:22px;font-size:.7rem}
+@media (max-width:640px){
+  .cards{grid-template-columns:1fr}
+  .highlights{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr}
+  .tools{grid-template-columns:1fr}
+  .services{grid-template-columns:1fr}
+  .services li,.services li:nth-child(even){padding:14px 0;border-inline-start:none;border-top:1px solid var(--line)}
+  .services li:first-child{border-top:none}
+  .media,.card.featured .media{height:250px;padding:20px 20px 0 18%}
+  .media .device-phone{left:12px;width:24%}
+  .btns .btn{flex:1 1 auto}
+  .facts{gap:28px}
+  .card.featured h4{font-size:1.3rem}
+  .group-head{align-items:flex-start}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .screen img.shot,.phone img,.stage .pf img,.tile .browser{transition:none!important}
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
+  .js .reveal{opacity:1;translate:none}
 }
 </style>
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
-<div class="wrap" id="top">
-  <header>
-    <a class="brand" href="#top"><img src="img/me.webp" alt="">محدثه توکلی</a>
-    <nav aria-label="بخش‌ها">
-      <a href="#samples">نمونه‌کارها</a>
-      <a href="#process">خدمات</a>
-      <a href="#resume">سوابق</a>
-      <a href="#contact" class="avail">آماده‌ی پروژه‌ی جدید</a>
-    </nav>
-  </header>
+<a class="skip" href="#main">رفتن به محتوای اصلی</a>
 
-  <section class="hero">
-    <div>
-      <div class="who">
-        <img src="img/me.webp" alt="محدثه توکلی">
-        <div><b>محدثه توکلی</b><span>طراح وب‌سایت و مدیر فروشگاه اینترنتی · تهران</span></div>
-      </div>
-      <h1>طراحی وب‌سایت و مدیریت فروشگاه اینترنتی؛ <em>از ایده تا اجرا</em></h1>
-      <p class="mono ltr" style="color:var(--muted);margin:0 0 18px;text-align:right">WordPress | Elementor | WooCommerce | Website Management</p>
-      <p class="lede" style="margin-bottom:12px">من محدثه توکلی هستم؛ طراح و مدیر وب‌سایت با تمرکز بر طراحی و پیاده‌سازی سایت‌های وردپرسی و مدیریت فروشگاه‌های اینترنتی.</p>
-      <p class="lede" style="margin-bottom:12px">وب‌سایت‌های بخش نمونه‌کار را به‌صورت مستقل طراحی و پیاده‌سازی کرده‌ام. همچنین تجربه‌ی مدیریت سایت‌های فعال، بارگذاری و سازمان‌دهی محصولات، به‌روزرسانی محتوا و مدیریت فروشگاه اینترنتی را دارم.</p>
-      <p class="lede" style="margin-bottom:12px">در اجرای پروژه‌ها به طراحی کاربرپسند، نمایش صحیح در موبایل و دسکتاپ، ساختار مناسب صفحات و تجربه‌ی کاربری توجه می‌کنم.</p>
-      <p class="lede">علاقه‌مند به همکاری پروژه‌ای و دورکاری در زمینه‌ی طراحی سایت، مدیریت وب‌سایت و پشتیبانی فروشگاه‌های اینترنتی هستم.</p>
-      <div class="ctas">
-        <a class="btn primary" href="#samples">دیدن نمونه‌کارها</a>
-        <a class="btn ghost" href="https://t.me/Mohadeseh0831" target="_blank" rel="noopener">پیام در تلگرام</a>
+<header class="site-header" id="siteHeader">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#home"><img src="img/me.webp" alt="" width="38" height="38">محدثه توکلی</a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="باز کردن منو">
+      <svg class="bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <nav class="nav" id="siteNav" aria-label="منوی اصلی">
+      <a href="#home">خانه</a>
+      <a href="#about">درباره من</a>
+      <a href="#skills">مهارت‌ها</a>
+      <a href="#work">نمونه‌کارها</a>
+      <a href="#experience">تجربه کاری</a>
+      <a href="#contact" class="nav-cta">تماس با من</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <!-- ===== hero ===== -->
+  <section class="wrap hero" id="home">
+    <div class="reveal">
+      <span class="badge"><i></i>آماده‌ی همکاری پروژه‌ای و دورکاری</span>
+      <h1>طراحی وب‌سایت و <span>مدیریت فروشگاه اینترنتی</span></h1>
+      <p class="stack ltr">WordPress · Elementor · WooCommerce · Website Management</p>
+      <p class="intro">من محدثه توکلی هستم؛ طراح و مدیر وب‌سایت با تمرکز بر طراحی سایت‌های وردپرسی، پیاده‌سازی صفحات و مدیریت فروشگاه‌های اینترنتی.</p>
+      <div class="btns">
+        <a class="btn btn-primary" href="#work">مشاهده نمونه‌کارها
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+        <a class="btn btn-outline" href="#contact">ارتباط برای همکاری</a>
       </div>
       <div class="facts">
         <div><b>۵</b><span>نمونه‌طراحی شخصی</span></div>
@@ -275,261 +345,363 @@ dialog::backdrop{background:rgba(8,10,18,.75);backdrop-filter:blur(4px)}
       </div>
     </div>
 
-    <figure class="spec" style="margin:0">
-      <div class="specbox">
-      <div class="browser">
-        <div class="bar"><i></i><i></i><i></i></div>
-        <div class="screen"><img class="shot" src="img/sava-desk.webp" alt="صفحه‌ی اصلی نمونه‌طراحی فروشگاه ساوا"></div>
+    <figure class="showcase reveal">
+      <div class="devices">
+      <div class="laptop">
+        <div class="lid"><div class="scr"><img src="img/viona-desk.webp" alt="صفحه‌ی اصلی سایت باشگاه ویونا فیتنس در نمای دسکتاپ" width="1100" height="5365" fetchpriority="high"></div></div>
+        <div class="base"></div>
       </div>
-      <div class="phone"><img src="img/sava-mob.webp" alt="نسخه‌ی موبایل فروشگاه ساوا"></div>
-      <span class="pin" style="right:25%;top:8%">۱</span>
-      <span class="pin" style="right:91%;top:8%">۲</span>
-      <span class="pin" style="right:16%;top:52%">۳</span>
-      <span class="pin" style="right:12%;top:75%">۴</span>
-      <span class="pin" style="right:84%;top:72%">۵</span>
+      <div class="device-phone" id="heroPhone"><img src="img/viona-mob.webp" alt="نسخه‌ی موبایل سایت باشگاه ویونا فیتنس" width="600" height="6936"></div>
       </div>
-      <figcaption>
-        <ol class="legend">
-          <li><b>۱</b><div>منو و ساختار دسته‌بندی محصولات <div class="mono">WooCommerce</div></div></li>
-          <li><b>۲</b><div>جست‌وجو، علاقه‌مندی‌ها و سبد خرید <div class="mono">WooCommerce</div></div></li>
-          <li><b>۳</b><div>بنر و صفحه‌آرایی <div class="mono">WordPress</div></div></li>
-          <li><b>۴</b><div>دکمه‌ی اصلی و مسیر خرید <div class="mono">UX</div></div></li>
-          <li><b>۵</b><div>نسخه‌ی موبایل جداگانه <div class="mono">Responsive</div></div></li>
-          <li style="color:var(--muted);font-size:.82rem">نمونه: فروشگاه ساوا (نمونه‌طراحی شخصی)</li>
-        </ol>
-      </figcaption>
+      <figcaption><span class="tag">نمونه‌طراحی شخصی</span>باشگاه ویونا فیتنس · طراحی و پیاده‌سازی: محدثه توکلی</figcaption>
     </figure>
   </section>
 
-  <section class="sec" id="process">
-    <div class="head">
-      <span class="mono">۰۱ / خدمات</span>
-      <div>
-        <h2>خدمات طراحی و مدیریت وب‌سایت</h2>
+  <!-- ===== about ===== -->
+  <section class="section band" id="about">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">درباره من</span>
+        <h2>طراحی دقیق، مدیریت منظم</h2>
+      </div>
+      <div class="about">
+        <aside class="profile reveal">
+          <img src="img/me.webp" alt="محدثه توکلی" width="124" height="124" loading="lazy">
+          <h3>محدثه توکلی</h3>
+          <p>طراح وب‌سایت و مدیر فروشگاه اینترنتی · تهران</p>
+          <span class="tag">همکاری پروژه‌ای و دورکاری</span>
+        </aside>
+        <div class="about-text reveal">
+          <p>وب‌سایت‌های بخش نمونه‌کار پروژه‌های شخصی من هستند؛ طراحی و پیاده‌سازی همه‌ی آن‌ها را خودم و به‌صورت مستقل انجام داده‌ام.</p>
+          <p>در کنار آن، تجربه‌ی مدیریت وب‌سایت‌های واقعی و فعال را دارم: بارگذاری و سازمان‌دهی محصولات، مدیریت دسته‌بندی‌ها و به‌روزرسانی محتوای فروشگاه.</p>
+          <p>در کارم به طراحی کاربرپسند، نمایش صحیح در موبایل و دسکتاپ و نظم در ساختار صفحات اهمیت می‌دهم و علاقه‌مند به همکاری پروژه‌ای و دورکاری هستم.</p>
+          <ul class="highlights">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>طراحی و پیاده‌سازی نمونه‌کارهای شخصی</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>مدیریت وب‌سایت‌های واقعی و فعال</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>مدیریت محصولات و محتوای فروشگاه</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>آماده‌ی همکاری پروژه‌ای و دورکاری</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== skills ===== -->
+  <section class="section" id="skills">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">مهارت‌ها</span>
+        <h2>مهارت‌ها و خدمات</h2>
         <p>بسته به نیاز پروژه، خدمات طراحی و پیاده‌سازی سایت یا مدیریت و به‌روزرسانی وب‌سایت ارائه می‌شود.</p>
       </div>
-    </div>
-    <ol class="steps">
-      <li><span class="n">۰۱</span><h3>طراحی صفحات وب‌سایت</h3><p>طراحی و چیدمان صفحات با تمرکز بر ظاهر حرفه‌ای و تجربه‌ی کاربری.</p><div class="tools"><span class="chip">Elementor Pro</span><span class="chip">Hello Elementor</span></div></li>
-      <li><span class="n">۰۲</span><h3>راه‌اندازی فروشگاه اینترنتی</h3><p>ایجاد ساختار فروشگاه، دسته‌بندی محصولات و مسیر خرید با ووکامرس.</p><div class="tools"><span class="chip">WooCommerce</span></div></li>
-      <li><span class="n">۰۳</span><h3>طراحی واکنش‌گرا</h3><p>بهینه‌سازی نمایش سایت در موبایل، تبلت و دسکتاپ.</p><div class="tools"><span class="chip">Responsive</span></div></li>
-      <li><span class="n">۰۴</span><h3>مدیریت وب‌سایت</h3><p>بارگذاری محصولات، مدیریت دسته‌بندی‌ها و به‌روزرسانی محتوا.</p><div class="tools"><span class="chip">WordPress</span><span class="chip">WooCommerce</span></div></li>
-      <li><span class="n">۰۵</span><h3>پشتیبانی و نگهداری</h3><p>رسیدگی به به‌روزرسانی‌ها و مشکلات متداول سایت.</p><div class="tools"><span class="chip">WordPress</span></div></li>
-    </ol>
-  </section>
+      <div class="skills reveal">
+        <div class="skill"><span class="n">۰۱</span><h3 class="ltr" style="text-align:right">WordPress</h3><p>ساخت و مدیریت سایت وردپرسی</p></div>
+        <div class="skill"><span class="n">۰۲</span><h3 class="ltr" style="text-align:right">Elementor</h3><p>طراحی صفحات با Elementor و Elementor Pro</p></div>
+        <div class="skill"><span class="n">۰۳</span><h3 class="ltr" style="text-align:right">WooCommerce</h3><p>ساختار فروشگاه و مسیر خرید</p></div>
+        <div class="skill"><span class="n">۰۴</span><h3>طراحی صفحات وب</h3><p>چیدمان صفحات و تجربه‌ی کاربری</p></div>
+        <div class="skill"><span class="n">۰۵</span><h3>طراحی واکنش‌گرا</h3><p>نمایش درست در موبایل، تبلت و دسکتاپ</p></div>
+        <div class="skill"><span class="n">۰۶</span><h3>مدیریت محصولات</h3><p>بارگذاری، سازمان‌دهی و دسته‌بندی محصولات</p></div>
+        <div class="skill"><span class="n">۰۷</span><h3>مدیریت محتوای وب‌سایت</h3><p>به‌روزرسانی صفحات و محتوای سایت</p></div>
+        <div class="skill"><span class="n">۰۸</span><h3>پشتیبانی و به‌روزرسانی سایت</h3><p>رسیدگی به به‌روزرسانی‌ها و مشکلات متداول</p></div>
+      </div>
 
-  <section class="sec" id="work">
-    <div class="head">
-      <span class="mono">۰۲ / مدیریت وب‌سایت</span>
-      <div>
-        <h2>پروژه‌های واقعی مدیریت وب‌سایت</h2>
-        <p>این دو پروژه، سایت‌های واقعی و فعال هستند که با سایت‌ساز ایجاد شده‌اند. مسئولیت من در این پروژه‌ها مدیریت وب‌سایت، بارگذاری و مدیریت محصولات بوده است؛ طراحی و توسعه‌ی سایت را به‌عنوان کار خودم معرفی نمی‌کنم.</p>
+      <h3 class="sub-title reveal">خدمات قابل ارائه</h3>
+      <ol class="services reveal">
+        <li><h4>طراحی صفحات وب‌سایت</h4><p>طراحی و چیدمان صفحات با تمرکز بر ظاهر حرفه‌ای و تجربه‌ی کاربری.</p></li>
+        <li><h4>راه‌اندازی فروشگاه اینترنتی</h4><p>ایجاد ساختار فروشگاه، دسته‌بندی محصولات و مسیر خرید با ووکامرس.</p></li>
+        <li><h4>طراحی واکنش‌گرا</h4><p>بهینه‌سازی نمایش سایت در موبایل، تبلت و دسکتاپ.</p></li>
+        <li><h4>مدیریت وب‌سایت</h4><p>بارگذاری محصولات، مدیریت دسته‌بندی‌ها و به‌روزرسانی محتوا.</p></li>
+        <li><h4>پشتیبانی و نگهداری</h4><p>رسیدگی به به‌روزرسانی‌ها و مشکلات متداول سایت.</p></li>
+      </ol>
+
+      <div class="tools reveal">
+        <div class="tool-group"><h4>ابزارهای آشنا</h4><p>آشنایی با ابزارهای سئو، سرعت و امنیت وردپرس</p>
+          <div class="chips"><span class="chip">Elementor Pro</span><span class="chip">Hello Elementor</span><span class="chip">WoodMart</span><span class="chip">Yoast SEO</span><span class="chip">Search Console</span><span class="chip">Google Analytics</span><span class="chip">WP Rocket</span><span class="chip">Wordfence</span><span class="chip">cPanel</span></div></div>
+        <div class="tool-group"><h4>هوش مصنوعی در کار روزانه</h4><p>برای ایده‌پردازی، تولید محتوا و کمک به روند طراحی</p>
+          <div class="chips"><span class="chip">Claude</span><span class="chip">ChatGPT</span><span class="chip">Gemini</span><span class="chip">Lovable</span></div></div>
+        <div class="tool-group"><h4>سایر مهارت‌ها</h4><p>مهارت‌های تکمیلی</p>
+          <div class="chips"><span class="chip">مدیریت محتوا</span><span class="chip">پشتیبانی کاربران</span><span class="chip">Microsoft Office</span><span class="chip">زبان انگلیسی</span></div></div>
       </div>
     </div>
-    <div id="cases"></div>
   </section>
 
-  <section class="sec" id="samples">
-    <div class="head">
-      <span class="mono">۰۳ / نمونه‌طراحی‌ها</span>
-      <div>
-        <h2>نمونه‌طراحی‌های شخصی</h2>
-        <p>این وب‌سایت‌ها پروژه‌های شخصی و نمونه‌کار من هستند که طراحی و پیاده‌سازی آن‌ها را خودم انجام داده‌ام. این موارد پروژه‌های کارفرمایی یا سایت‌های فعال مشتریان نیستند.</p>
+  <!-- ===== portfolio ===== -->
+  <section class="section band" id="work">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">نمونه‌کارها</span>
+        <h2>نمونه‌کارها در دو گروه جدا</h2>
+        <p>طراحی‌هایی که خودم انجام داده‌ام، جدا از سایت‌های واقعی‌ای که فقط مدیریتشان با من است. روی تصویر هر پروژه نگه دارید تا صفحه اسکرول شود؛ با کلیک، نسخه‌ی کامل دسکتاپ و موبایل باز می‌شود.</p>
+      </div>
+
+      <div class="group" id="samples">
+        <div class="group-head reveal">
+          <div>
+            <span class="tag">گروه اول</span>
+            <h3>طراحی و پیاده‌سازی شخصی</h3>
+            <p>این وب‌سایت‌ها پروژه‌های شخصی و نمونه‌کار من هستند که طراحی و پیاده‌سازی آن‌ها را خودم انجام داده‌ام. این موارد پروژه‌های کارفرمایی یا سایت‌های فعال مشتریان نیستند.</p>
+          </div>
+          <div class="filters" role="group" aria-label="فیلتر نمونه‌طراحی‌ها">
+            <button type="button" data-f="all" aria-pressed="true">همه</button>
+            <button type="button" data-f="shop" aria-pressed="false">فروشگاهی</button>
+            <button type="button" data-f="biz" aria-pressed="false">خدماتی و ورزشی</button>
+          </div>
+        </div>
+        <div class="cards" id="designCards"></div>
+      </div>
+
+      <div class="group" id="managed">
+        <div class="group-head reveal">
+          <div>
+            <span class="tag real">گروه دوم · سایت‌های فعال</span>
+            <h3>تجربه‌ی مدیریت وب‌سایت</h3>
+            <p>این دو پروژه، سایت‌های واقعی و فعال هستند که با سایت‌ساز ایجاد شده‌اند. مسئولیت من در این پروژه‌ها مدیریت وب‌سایت، بارگذاری و مدیریت محصولات بوده است؛ طراحی و توسعه‌ی سایت را به‌عنوان کار خودم معرفی نمی‌کنم.</p>
+          </div>
+        </div>
+        <div class="cards manage" id="manageCards"></div>
       </div>
     </div>
-    <div class="toolbar" role="group" aria-label="فیلتر نمونه‌ها">
-      <button type="button" data-f="all" aria-pressed="true">همه</button>
-      <button type="button" data-f="shop" aria-pressed="false">فروشگاهی</button>
-      <button type="button" data-f="biz" aria-pressed="false">خدماتی و ورزشی</button>
-    </div>
-    <div class="grid" id="grid"></div>
   </section>
 
-  <section class="sec" id="resume">
-    <div class="head">
-      <span class="mono">۰۴ / سوابق</span>
-      <div>
-        <h2>سوابق کاری و مهارت‌ها</h2>
+  <!-- ===== experience ===== -->
+  <section class="section" id="experience">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">تجربه کاری</span>
+        <h2>سوابق کاری و تحصیلات</h2>
         <p>تجربه در طراحی و پیاده‌سازی نمونه‌کارهای وب‌سایت و مدیریت فروشگاه‌های اینترنتی.</p>
       </div>
-    </div>
-    <div class="cv">
-      <div class="jobs">
-        <article class="job">
-          <div class="when">مهر ۱۴۰۴ تا اکنون</div>
+      <div class="timeline">
+        <article class="exp reveal">
+          <div class="when">مهر ۱۴۰۴ تا اکنون<span class="where">پروژه‌ای · تهران</span></div>
           <div>
             <h3>ادمین و طراح سایت</h3>
-            <p class="where">پروژه‌ای · تهران</p>
-            <p class="where">طراحی سایت</p>
-            <ul>
-              <li>طراحی و پیاده‌سازی مستقل وب‌سایت‌های نمونه‌کار</li>
-              <li>طراحی صفحات با Elementor و Elementor Pro</li>
-              <li>کار با WordPress و WooCommerce</li>
-              <li>طراحی ساختار صفحات و دسته‌بندی محصولات</li>
-              <li>بهینه‌سازی نمایش سایت در موبایل و دسکتاپ</li>
-              <li>آشنایی با ابزارهای سئو، سرعت و امنیت وردپرس</li>
-            </ul>
-            <p class="where" style="margin-top:14px">مدیریت سایت</p>
-            <ul>
-              <li>مدیریت وب‌سایت‌های فعال</li>
-              <li>بارگذاری و سازمان‌دهی محصولات</li>
-              <li>مدیریت دسته‌بندی‌ها</li>
-              <li>به‌روزرسانی محتوای سایت</li>
-              <li>مدیریت و پیگیری درخواست‌های کاربران</li>
-            </ul>
+            <div class="split">
+              <div class="sub">
+                <span class="tag">طراحی سایت</span>
+                <h4>طراحی و پیاده‌سازی نمونه‌کارهای شخصی</h4>
+                <ul class="dots">
+                  <li>طراحی و پیاده‌سازی مستقل وب‌سایت‌های نمونه‌کار</li>
+                  <li>طراحی صفحات با Elementor و Elementor Pro</li>
+                  <li>کار با WordPress و WooCommerce</li>
+                  <li>طراحی ساختار صفحات و دسته‌بندی محصولات</li>
+                  <li>بهینه‌سازی نمایش سایت در موبایل و دسکتاپ</li>
+                  <li>آشنایی با ابزارهای سئو، سرعت و امنیت وردپرس</li>
+                </ul>
+              </div>
+              <div class="sub">
+                <span class="tag real">مدیریت سایت</span>
+                <h4>مدیریت سایت و محصولات · استادجوهر و استادمهر</h4>
+                <ul class="dots">
+                  <li>مدیریت وب‌سایت‌های فعال</li>
+                  <li>بارگذاری و سازمان‌دهی محصولات</li>
+                  <li>مدیریت دسته‌بندی‌ها</li>
+                  <li>به‌روزرسانی محتوای سایت</li>
+                  <li>مدیریت و پیگیری درخواست‌های کاربران</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </article>
-        <article class="job">
-          <div class="when">اردیبهشت ۱۴۰۲ تا بهمن ۱۴۰۴</div>
+        <article class="exp reveal">
+          <div class="when">اردیبهشت ۱۴۰۲ تا بهمن ۱۴۰۴<span class="where">تهران</span></div>
           <div>
             <h3>ادمین و پشتیبان</h3>
-            <p class="where">تهران</p>
-            <ul>
+            <ul class="dots" style="margin-top:10px">
               <li>پاسخ‌گویی به مخاطبان در اینستاگرام، واتس‌اپ، تلگرام، بله و روبیکا</li>
               <li>مدیریت دایرکت‌ها، کامنت‌ها و پیام‌های ورودی</li>
               <li>راهنمایی کاربران و پیگیری درخواست‌ها و مشکلات مشتریان</li>
             </ul>
           </div>
         </article>
-        <div class="edu"><b>کارشناسی روان‌شناسی</b><span>مدرسه‌ی عالی شهید مطهری، تهران</span></div>
+        <article class="exp edu reveal">
+          <div class="when">تحصیلات</div>
+          <div>
+            <h3>کارشناسی روان‌شناسی</h3>
+            <p>مدرسه‌ی عالی شهید مطهری، تهران</p>
+          </div>
+        </article>
       </div>
-      <aside class="side">
-        <div class="group"><h4>طراحی سایت</h4><div class="chips"><span class="chip">WordPress</span><span class="chip">Elementor Pro</span><span class="chip">WooCommerce</span><span class="chip">Hello Elementor</span><span class="chip">WoodMart</span><span class="chip">Responsive</span></div></div>
-        <div class="group"><h4>آشنایی با ابزارهای سئو، سرعت و امنیت</h4><div class="chips"><span class="chip">Yoast SEO</span><span class="chip">Search Console</span><span class="chip">Google Analytics</span><span class="chip">WP Rocket</span><span class="chip">Wordfence</span><span class="chip">cPanel</span></div></div>
-        <div class="group ai"><h4>هوش مصنوعی در کار روزانه</h4><p>ایده‌پردازی، تولید محتوا و کمک به روند طراحی.</p><div class="chips"><span class="chip">Claude</span><span class="chip">ChatGPT</span><span class="chip">Gemini</span><span class="chip">Lovable</span></div></div>
-        <div class="group"><h4>سایر مهارت‌ها</h4><div class="chips"><span class="chip" style="direction:rtl;font-family:var(--body)">مدیریت محتوا</span><span class="chip" style="direction:rtl;font-family:var(--body)">پشتیبانی کاربران</span><span class="chip">Microsoft Office</span><span class="chip" style="direction:rtl;font-family:var(--body)">زبان انگلیسی</span></div></div>
-      </aside>
     </div>
   </section>
 
-  <section class="sec" id="faq">
-    <div class="head">
-      <span class="mono">۰۵ / سؤالات</span>
+  <!-- ===== faq ===== -->
+  <section class="section band" id="faq" style="padding-block:clamp(56px,7vw,88px)">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">سؤالات متداول</span>
+        <h2>پیش از شروع همکاری</h2>
+      </div>
+      <div class="faq reveal">
+        <details open>
+          <summary>آیا این سایت‌ها تماماً با هوش مصنوعی ساخته شده‌اند؟</summary>
+          <div class="a">
+            <p>نمونه‌کارهای بخش طراحی، پروژه‌های شخصی هستند که طراحی و پیاده‌سازی آن‌ها را خودم انجام داده‌ام. پروژه‌های استادجوهر و استادمهر سایت‌های واقعی هستند که با سایت‌ساز ساخته شده‌اند و مسئولیت من در آن‌ها مدیریت سایت و محصولات بوده است.</p>
+            <p>از ابزارهای هوش مصنوعی نیز برای ایده‌پردازی، تولید محتوا و کمک به روند طراحی استفاده می‌کنم.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== contact ===== -->
+  <div class="wrap" style="padding-top:clamp(64px,9vw,104px)">
+    <section class="contact reveal" id="contact">
       <div>
-        <h2>سؤالات متداول</h2>
+        <span class="eyebrow">تماس با من</span>
+        <h2>برای شروع یک همکاری حرفه‌ای آماده‌ام.</h2>
+        <p>اگر برای طراحی وب‌سایت، مدیریت فروشگاه اینترنتی یا پشتیبانی وب‌سایت به همکاری نیاز دارید، خوشحال می‌شوم گفت‌وگو کنیم.</p>
+        <a class="btn btn-light" href="https://t.me/Mohadeseh0831" target="_blank" rel="noopener">شروع گفت‌وگو در تلگرام
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
       </div>
-    </div>
-    <div class="faq">
-      <details open>
-        <summary>آیا این سایت‌ها تماماً با هوش مصنوعی ساخته شده‌اند؟</summary>
-        <div class="a">
-          <p>نمونه‌کارهای بخش طراحی، پروژه‌های شخصی هستند که طراحی و پیاده‌سازی آن‌ها را خودم انجام داده‌ام. پروژه‌های استادجوهر و استادمهر سایت‌های واقعی هستند که با سایت‌ساز ساخته شده‌اند و مسئولیت من در آن‌ها مدیریت سایت و محصولات بوده است.</p>
-          <p>از ابزارهای هوش مصنوعی نیز برای ایده‌پردازی، تولید محتوا و کمک به روند طراحی استفاده می‌کنم.</p>
-        </div>
-      </details>
-    </div>
-  </section>
+      <div class="ways">
+        <div class="way"><div><small>تلگرام</small><a class="v" href="https://t.me/Mohadeseh0831" target="_blank" rel="noopener">@Mohadeseh0831</a></div><button class="copy" type="button" data-copy="@Mohadeseh0831">کپی</button></div>
+        <div class="way"><div><small>ایمیل</small><a class="v" href="mailto:mohitvk644@gmail.com">mohitvk644@gmail.com</a></div><button class="copy" type="button" data-copy="mohitvk644@gmail.com">کپی</button></div>
+        <div class="way"><div><small>تلفن</small><a class="v" href="tel:+989911595827">+98 991 159 5827</a></div><button class="copy" type="button" data-copy="+989911595827">کپی</button></div>
+      </div>
+    </section>
+  </div>
+</main>
 
-  <section class="contact" id="contact">
-    <div>
-      <h2>برای طراحی سایت یا مدیریت فروشگاه اینترنتی آماده‌ی همکاری‌ام.</h2>
-      <p>برای همکاری پروژه‌ای و دورکاری در زمینه‌ی طراحی و پیاده‌سازی وب‌سایت یا مدیریت و به‌روزرسانی سایت پیام بدهید.</p>
-    </div>
-    <div class="ways">
-      <div class="way"><div><small>تلگرام</small><a class="v" href="https://t.me/Mohadeseh0831" target="_blank" rel="noopener">@Mohadeseh0831</a></div><button class="copy" type="button" data-copy="@Mohadeseh0831">کپی</button></div>
-      <div class="way"><div><small>ایمیل</small><a class="v" href="mailto:mohitvk644@gmail.com">mohitvk644@gmail.com</a></div><button class="copy" type="button" data-copy="mohitvk644@gmail.com">کپی</button></div>
-      <div class="way"><div><small>تلفن</small><span class="v">+98 991 159 5827</span></div><button class="copy" type="button" data-copy="+989911595827">کپی</button></div>
-    </div>
-  </section>
-  <footer><span>© ۱۴۰۵ محدثه توکلی</span><span>طراحی و مدیریت وب‌سایت وردپرس · تهران</span></footer>
-</div>
+<footer class="wrap"><span>© ۱۴۰۵ محدثه توکلی</span><span>طراحی و مدیریت وب‌سایت وردپرس · تهران</span></footer>
 
 <dialog id="lb" aria-labelledby="lbTitle">
   <div class="lb">
-    <div class="browser"><div class="bar"><i></i><i></i><i></i></div><div class="screen" id="lbScreen" tabindex="0"></div></div>
+    <div class="lb-screen" id="lbScreen" tabindex="0"></div>
     <div class="lb-side">
       <button class="lb-close" id="lbClose" type="button">بستن ✕</button>
       <div><h3 id="lbTitle"></h3><p id="lbDesc"></p></div>
       <dl id="lbMeta"></dl>
+      <div id="lbLink"></div>
       <div class="lb-phone" id="lbPhone" tabindex="0"></div>
     </div>
   </div>
 </dialog>
 
 <script>
-const LIVE = [
+/* Personal design samples: designed and built by me. */
+const DESIGNS = [
+  { cat:"shop", featured:true, title:"فروشگاه ساوا", desc:"فروشگاه کیف و کفش چرم زنانه و مردانه با کالکشن‌های جدید، جست‌وجوی محصول بر اساس رنگ و قیمت، و داستان برند.",
+    type:"فروشگاه اینترنتی", platform:"WordPress (طرح اولیه با Lovable)", desk:"img/sava-desk.webp", mob:"img/sava-mob.webp", st:"#EFE7DC" },
+  { cat:"biz", title:"باشگاه ویونا فیتنس", desc:"سایت باشگاه تخصصی بانوان با معرفی کلاس‌ها، مربیان، پلن‌های عضویت، رزرو سانس و نظرات اعضا.",
+    type:"سایت ورزشی و رزرو آنلاین", platform:"WordPress", desk:"img/viona-desk.webp", mob:"img/viona-mob.webp", st:"#EFE6EE" },
+  { cat:"shop", title:"فروشگاه عطر", desc:"انتخاب عطر بر اساس حس‌وحال، برندهای منتخب، مشاوره‌ی آنلاین و مجله.",
+    type:"فروشگاه اینترنتی", platform:"WordPress", desk:"img/perfume-desk.webp", mob:"img/perfume-mob.webp", st:"#F3E4E8" },
+  { cat:"biz", title:"کلینیک دندان‌پزشکی", desc:"نوبت‌دهی آنلاین مرحله‌به‌مرحله، خدمات و تعرفه‌ها، پیگیری نوبت و معرفی پزشکان.",
+    type:"سایت خدماتی و نوبت‌دهی", platform:"WordPress", desk:"img/dental-desk.webp", mob:"img/dental-mob.webp", st:"#E6ECF7" },
+  { cat:"shop", title:"فروشگاه کتونی", desc:"کفش و کتونی با دسته‌بندی، پرفروش‌ها، نظرات مشتریان و مجله‌ی استایل.",
+    type:"فروشگاه اینترنتی", platform:"WordPress", desk:"img/katoni-desk.webp", mob:"img/katoni-mob.webp", st:"#DFE8DF" }
+];
+/* Real, live sites built on a site builder by others: my role is site & product management only.
+   Set url to the live address to make «مشاهده وب‌سایت» open the real site. */
+const MANAGED = [
   { title:"استادجوهر", desc:"پروژه‌ی واقعی و فعال فروشگاه استادجوهر. سایت با سایت‌ساز ایجاد شده و مسئولیت من مدیریت وب‌سایت، بارگذاری و سامان‌دهی محصولات و مدیریت محتوای فروشگاه است.",
-    role:"مدیریت سایت و محصولات", type:"پروژه‌ی واقعی", platform:"سایت‌ساز", status:"آنلاین و فعال", year:"۱۴۰۵",
-    desk:"img/johar-desk.webp", mob:"img/johar-mob.webp" },
+    url:"", desk:"img/johar-desk.webp", mob:"img/johar-mob.webp", st:"#E9ECF3" },
   { title:"استادمهر", desc:"پروژه‌ی واقعی فروشگاه استادمهر. سایت با سایت‌ساز ایجاد شده و مسئولیت من مدیریت وب‌سایت، بارگذاری و مدیریت محصولات و به‌روزرسانی محتوای سایت است.",
-    role:"مدیریت سایت و محصولات", type:"پروژه‌ی واقعی", platform:"سایت‌ساز", status:"آنلاین و فعال", year:"۱۴۰۵",
-    desk:"img/mehr-desk.webp", mob:"img/mehr-mob.webp" }
+    url:"", desk:"img/mehr-desk.webp", mob:"img/mehr-mob.webp", st:"#EFE9F2" }
 ];
-const WORK = [
-  { cat:"biz", title:"باشگاه ویونا فیتنس", desc:"سایت باشگاه تخصصی بانوان با معرفی کلاس‌ها، مربیان، پلن‌های عضویت، رزرو سانس و نظرات اعضا.", tags:["ورزشی","رزرو آنلاین","لوکس"], desk:"img/viona-desk.webp", mob:"img/viona-mob.webp", st:"#EFE6EE" },
-  { cat:"shop", title:"فروشگاه ساوا", desc:"فروشگاه کیف و کفش چرم زنانه و مردانه با کالکشن‌های جدید، جست‌وجوی محصول بر اساس رنگ و قیمت، و داستان برند.", tags:["فروشگاهی","چرم","طرح اختصاصی"], platform:"WordPress (طرح اولیه با Lovable)", desk:"img/sava-desk.webp", mob:"img/sava-mob.webp", st:"#EFE7DC" },
-  { cat:"shop", title:"فروشگاه عطر", desc:"انتخاب عطر بر اساس حس‌وحال، برندهای منتخب، مشاوره‌ی آنلاین و مجله.", tags:["فروشگاهی","لوکس"], desk:"img/perfume-desk.webp", mob:"img/perfume-mob.webp", st:"#F3E4E8" },
-  { cat:"biz", title:"کلینیک دندان‌پزشکی", desc:"نوبت‌دهی آنلاین مرحله‌به‌مرحله، خدمات و تعرفه‌ها، پیگیری نوبت و معرفی پزشکان.", tags:["نوبت‌دهی","شرکتی"], desk:"img/dental-desk.webp", mob:"img/dental-mob.webp", st:"#E8EEFB" },
-  { cat:"shop", title:"فروشگاه کتونی", desc:"کفش و کتونی با دسته‌بندی، پرفروش‌ها، نظرات مشتریان و مجله‌ی استایل.", tags:["فروشگاهی","موبایل‌محور"], desk:"img/katoni-desk.webp", mob:"img/katoni-mob.webp", st:"#DCE6DD" }
-];
+const ROLE_DESIGN = "طراحی و پیاده‌سازی";
+const ROLE_MANAGE = "مدیریت وب‌سایت، بارگذاری و مدیریت محصولات";
+const ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>';
 
-/* scroll a tall image inside its fixed-height box on hover */
+/* scroll a tall phone screenshot inside its frame on hover/focus */
 function wirePhone(host, box){
-  const img = box.querySelector('img'); if(!img) return;
-  const go = ()=>{ const d = img.offsetHeight - box.offsetHeight; img.style.transform = `translateY(-${Math.max(0,d)}px)`; };
+  const img = box && box.querySelector('img'); if(!img) return;
+  const go = ()=>{ img.style.transform = `translateY(-${Math.max(0, img.offsetHeight - box.offsetHeight)}px)`; };
   const back = ()=>{ img.style.transform = ''; };
   host.addEventListener('mouseenter',go); host.addEventListener('mouseleave',back);
   host.addEventListener('focusin',go); host.addEventListener('focusout',back);
 }
-const frame = inner => `<div class="browser"><div class="bar"><i></i><i></i><i></i></div><div class="screen">${inner}</div></div>`;
 
-const cases = document.getElementById('cases');
-LIVE.forEach(p=>{
-  const el = document.createElement('article'); el.className='case';
-  el.innerHTML = `<div class="visual">${frame(`<img class="shot" src="${p.desk}" alt="صفحه‌ی اصلی ${p.title}" loading="lazy">`)}
-      <div class="phone"><img src="${p.mob}" alt="" loading="lazy"></div>
-      <button class="cover" type="button" aria-label="دیدن کامل ${p.title}"></button></div>
-    <div><span class="status">${p.status}</span><h3>${p.title}</h3><p>${p.desc}</p>
-      <dl class="role"><dt>نقش من</dt><dd>${p.role}</dd><dt>نوع پروژه</dt><dd>${p.type}</dd><dt>پلتفرم</dt><dd>${p.platform}</dd><dt>سال</dt><dd>${p.year}</dd></dl>
-      <button class="linkbtn" type="button">دیدن کامل دسکتاپ و موبایل</button></div>`;
-  const open = ()=>openLb(p,[["نقش من",p.role],["نوع پروژه",p.type],["پلتفرم",p.platform],["وضعیت",p.status],["سال",p.year]]);
-  el.querySelector('.cover').addEventListener('click',open);
-  el.querySelector('.linkbtn').addEventListener('click',open);
-  cases.appendChild(el);
-  wirePhone(el.querySelector('.visual'), el.querySelector('.phone'));
-});
+function card(p, kind){
+  const el = document.createElement('article');
+  el.className = 'card reveal' + (p.featured ? ' featured' : '');
+  if (p.cat) el.dataset.cat = p.cat;
+  const design = kind === 'design';
+  const meta = design
+    ? [["نوع پروژه", p.type], ["نقش من", ROLE_DESIGN]]
+    : [["نوع پروژه", "پروژه‌ی واقعی · سایت‌ساز"], ["نقش من", ROLE_MANAGE]];
+  el.innerHTML = `
+    <div class="media" style="--st:${p.st}">
+      <div class="browser"><div class="bar"><i></i><i></i><i></i></div><img class="shot" src="${p.desk}" alt="نمای دسکتاپ ${p.title}" loading="lazy"></div>
+      <div class="device-phone"><img src="${p.mob}" alt="" loading="lazy"></div>
+      <button class="open" type="button" aria-label="پیش‌نمایش کامل ${p.title}"></button>
+    </div>
+    <div class="card-body">
+      <span class="tag${design ? '' : ' real'}">${design ? 'نمونه‌طراحی شخصی' : 'آنلاین و فعال'}</span>
+      <h4>${p.title}</h4>
+      <p>${p.desc}</p>
+      <dl class="meta">${meta.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>
+      <div class="card-foot">${p.url
+        ? `<a class="btn btn-outline btn-sm" href="${p.url}" target="_blank" rel="noopener">مشاهده وب‌سایت ${ARROW}</a>`
+        : `<button class="btn btn-outline btn-sm view" type="button">مشاهده وب‌سایت ${ARROW}</button>`}</div>
+    </div>`;
+  const lbMeta = design
+    ? [["نقش من", ROLE_DESIGN], ["نوع پروژه", p.type], ["پلتفرم", p.platform], ["وضعیت", "نمونه‌طراحی شخصی"]]
+    : [["نقش من", ROLE_MANAGE], ["نوع پروژه", "پروژه‌ی واقعی"], ["پلتفرم", "سایت‌ساز"], ["وضعیت", "آنلاین و فعال"]];
+  const open = ()=>openLb(p, lbMeta);
+  el.querySelector('.open').addEventListener('click', open);
+  const v = el.querySelector('.view'); if (v) v.addEventListener('click', open);
+  wirePhone(el, el.querySelector('.device-phone'));
+  return el;
+}
+const designCards = document.getElementById('designCards');
+DESIGNS.forEach(p=>designCards.appendChild(card(p,'design')));
+const manageCards = document.getElementById('manageCards');
+MANAGED.forEach(p=>manageCards.appendChild(card(p,'manage')));
 
-const grid = document.getElementById('grid');
-WORK.forEach(p=>{
-  const el = document.createElement('article'); el.className='tile'; el.dataset.cat=p.cat;
-  const inner = p.desk ? `<img class="shot" src="${p.desk}" alt="پیش‌نمایش ${p.title}" loading="lazy">`
-    : `<div class="stage" style="--st:${p.st}"><div class="pf"><img src="${p.mob}" alt="پیش‌نمایش ${p.title}" loading="lazy"></div></div>`;
-  const phone = (p.desk && p.mob) ? `<div class="phone"><img src="${p.mob}" alt="نسخه‌ی موبایل ${p.title}" loading="lazy"></div>` : '';
-  el.innerHTML = `<div class="visual">${frame(inner)}${phone}<button class="cover" type="button" aria-label="دیدن کامل ${p.title}"></button></div>
-    <div class="tile-meta"><div><h3>${p.title}</h3><p>${p.desc}</p><div class="tags">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div></div>
-    <span class="kind">${p.desk ? "دسکتاپ + موبایل" : "طراحی موبایل"}</span></div>`;
-  el.querySelector('.cover').addEventListener('click',()=>openLb(p,[["پلتفرم",p.platform||"WordPress"],["نوع",p.tags.join("، ")],["سال","۱۴۰۵"],["وضعیت","نمونه‌طراحی شخصی"]]));
-  grid.appendChild(el);
-  wirePhone(el, el.querySelector(p.desk ? '.phone' : '.pf'));
-});
-
-document.querySelector('.toolbar').addEventListener('click',e=>{
+/* filters */
+document.querySelector('.filters').addEventListener('click',e=>{
   const b = e.target.closest('button'); if(!b) return;
-  document.querySelectorAll('.toolbar button').forEach(x=>x.setAttribute('aria-pressed', String(x===b)));
-  grid.querySelectorAll('.tile').forEach(c=>{ c.hidden = !(b.dataset.f==='all' || c.dataset.cat===b.dataset.f); });
+  document.querySelectorAll('.filters button').forEach(x=>x.setAttribute('aria-pressed', String(x===b)));
+  designCards.querySelectorAll('.card').forEach(c=>{ c.hidden = !(b.dataset.f==='all' || c.dataset.cat===b.dataset.f); });
 });
 
+/* lightbox */
 const lb = document.getElementById('lb');
 function openLb(p, meta){
   const scr = document.getElementById('lbScreen'), ph = document.getElementById('lbPhone');
-  scr.innerHTML = p.desk ? `<img src="${p.desk}" alt="نسخه‌ی دسکتاپ ${p.title}">`
-    : `<div style="background:${p.st};padding:24px 0"><img src="${p.mob}" alt="نسخه‌ی موبایل ${p.title}" style="max-width:380px;margin:auto;border-radius:12px"></div>`;
-  ph.innerHTML = p.mob ? `<img src="${p.mob}" alt="نسخه‌ی موبایل ${p.title}">` : '';
-  ph.style.display = (p.mob && p.desk) ? '' : 'none';
+  scr.innerHTML = `<img src="${p.desk}" alt="نسخه‌ی دسکتاپ ${p.title}">`;
+  ph.innerHTML = `<img src="${p.mob}" alt="نسخه‌ی موبایل ${p.title}">`;
   scr.scrollTop = 0; ph.scrollTop = 0;
   document.getElementById('lbTitle').textContent = p.title;
   document.getElementById('lbDesc').textContent = p.desc;
   document.getElementById('lbMeta').innerHTML = meta.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join('');
+  document.getElementById('lbLink').innerHTML = p.url ? `<a class="btn btn-primary btn-sm" href="${p.url}" target="_blank" rel="noopener">باز کردن سایت ${ARROW}</a>` : '';
   if (typeof lb.showModal === 'function') lb.showModal(); else lb.setAttribute('open','');
 }
 document.getElementById('lbClose').addEventListener('click',()=>lb.close());
 lb.addEventListener('click',e=>{ if(e.target===lb) lb.close(); });
 
+/* mobile menu */
+const menuBtn = document.getElementById('menuBtn'), nav = document.getElementById('siteNav');
+function setMenu(open){ nav.classList.toggle('open',open); menuBtn.setAttribute('aria-expanded',String(open)); menuBtn.setAttribute('aria-label', open ? 'بستن منو' : 'باز کردن منو'); }
+menuBtn.addEventListener('click',()=>setMenu(!nav.classList.contains('open')));
+nav.addEventListener('click',e=>{ if(e.target.closest('a')) setMenu(false); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') setMenu(false); });
+document.addEventListener('click',e=>{ if(nav.classList.contains('open') && !e.target.closest('.nav-inner')) setMenu(false); });
+
+/* header border after scroll */
+const header = document.getElementById('siteHeader');
+const onScroll = ()=>header.classList.toggle('scrolled', scrollY > 8);
+addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+/* hero phone scrolls with the laptop on hover */
+wirePhone(document.querySelector('.showcase'), document.getElementById('heroPhone'));
+
+/* copy contact details */
 document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',async()=>{
   try{ await navigator.clipboard.writeText(b.dataset.copy); b.textContent='کپی شد'; }
   catch(_){ b.textContent='کپی نشد'; }
   setTimeout(()=>{ b.textContent='کپی'; },1600);
 }));
+
+/* gentle reveal on scroll */
+const items = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window){
+  const io = new IntersectionObserver(es=>es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }),{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  items.forEach(el=>io.observe(el));
+} else items.forEach(el=>el.classList.add('in'));
 </script>
 </body>
 </html>
