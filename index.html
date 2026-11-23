@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>محدثه توکلی | طراح وب‌سایت و مدیر فروشگاه اینترنتی</title>
+<meta name="description" content="پورتفولیوی محدثه توکلی؛ طراحی و پیاده‌سازی وب‌سایت‌های وردپرسی و مدیریت فروشگاه اینترنتی. آماده‌ی همکاری پروژه‌ای و دورکاری.">
+<meta property="og:title" content="محدثه توکلی | طراح وب‌سایت و مدیر فروشگاه اینترنتی">
+<meta property="og:description" content="نمونه‌طراحی‌های شخصی و تجربه‌ی مدیریت وب‌سایت‌های فعال.">
+<meta property="og:image" content="img/johar-desk.webp">
+<meta name="theme-color" content="#FAF7F1">
+<link rel="icon" href="img/me.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap">
+<style>
+/* Palette: warm cream paper, deep navy ink, olive accent used sparingly. */
+:root{
+  --bg:#FAF7F1;
+  --bg-2:#F2EDE3;
+  --surface:#FFFFFF;
+  --navy:#15223D;
+  --navy-2:#22335A;
+  --text:#2C3345;
+  --muted:#686F7F;
+  --line:#E7E1D5;
+  --olive:#5C6E33;
+  --olive-soft:#EDF0E0;
+  --on-navy:#F5F2EA;
+  --olive-on-navy:#C6D59A;
+  --live:#2F8A5B;
+  --sh-1:0 1px 2px rgba(21,34,61,.04),0 10px 28px -20px rgba(21,34,61,.22);
+  --sh-2:0 2px 6px rgba(21,34,61,.05),0 28px 50px -28px rgba(21,34,61,.34);
+  --font:"Vazirmatn",Tahoma,"Segoe UI",sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.9 var(--font);-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,h4{color:var(--navy);font-weight:800}
+.wrap{max-width:1180px;margin-inline:auto;padding-inline:clamp(18px,4vw,32px)}
+:focus-visible{outline:2px solid var(--olive);outline-offset:3px;border-radius:8px}
+.ltr{direction:ltr;unicode-bidi:isolate}
+.skip{position:absolute;inset-inline-start:12px;top:-60px;background:var(--navy);color:var(--on-navy);padding:8px 14px;border-radius:8px;z-index:100;text-decoration:none}
+.skip:focus{top:12px}
+
+/* ---------- header ---------- */
+.site-header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(1.2) blur(12px);-webkit-backdrop-filter:saturate(1.2) blur(12px);border-bottom:1px solid transparent;transition:border-color .3s}
+.site-header.scrolled{border-bottom-color:var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;height:72px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;color:var(--navy);font-size:1.02rem}
+.brand img{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid var(--surface);box-shadow:var(--sh-1)}
+.nav{display:flex;align-items:center;gap:2px}
+.nav a{padding:6px 13px;border-radius:999px;text-decoration:none;color:var(--muted);font-weight:500;font-size:.93rem;transition:color .25s,background-color .25s}
+.nav a:hover{color:var(--navy);background:var(--bg-2)}
+.nav a.nav-cta{margin-inline-start:8px;background:var(--navy);color:var(--on-navy);font-weight:600;padding-inline:18px}
+.nav a.nav-cta:hover{background:var(--navy-2)}
+.menu-btn{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:12px;background:var(--surface);cursor:pointer;align-items:center;justify-content:center;color:var(--navy)}
+.menu-btn svg{width:20px;height:20px}
+.menu-btn .x{display:none}
+.menu-btn[aria-expanded="true"] .x{display:block}
+.menu-btn[aria-expanded="true"] .bars{display:none}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 24px;border-radius:12px;border:1.5px solid transparent;font:700 .97rem var(--font);text-decoration:none;cursor:pointer;transition:background-color .25s,color .25s,border-color .25s,box-shadow .25s,transform .25s var(--ease)}
+.btn svg{width:18px;height:18px;flex:none;transition:transform .25s var(--ease)}
+.btn:hover svg{transform:translateX(-3px)}
+.btn-primary{background:var(--navy);color:var(--on-navy)}
+.btn-primary:hover{background:var(--navy-2);box-shadow:0 12px 24px -14px rgba(21,34,61,.6)}
+.btn-outline{background:var(--surface);border-color:var(--line);color:var(--navy)}
+.btn-outline:hover{border-color:var(--olive);color:var(--olive)}
+.btn-sm{min-height:42px;padding:0 18px;font-size:.9rem;border-radius:10px}
+
+/* ---------- hero ---------- */
+.hero{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(36px,5vw,72px);align-items:center;padding-block:clamp(36px,6vw,80px) clamp(56px,8vw,104px)}
+.badge{display:inline-flex;align-items:center;gap:9px;padding:5px 14px;border-radius:999px;background:var(--olive-soft);color:var(--olive);font-size:.86rem;font-weight:600}
+.badge i{position:relative;width:8px;height:8px;border-radius:50%;background:currentColor}
+.badge i::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1.5px solid currentColor;opacity:0;animation:ping 2.6s var(--ease) infinite}
+@keyframes ping{0%{transform:scale(.6);opacity:.7}80%,100%{transform:scale(1.5);opacity:0}}
+.hero h1{font-size:clamp(2.1rem,4.4vw,3.45rem);line-height:1.32;margin:20px 0 12px;letter-spacing:-.01em;text-wrap:balance}
+.hero h1 span{color:var(--olive)}
+.stack{margin:0 0 18px;font-size:.82rem;color:var(--muted);letter-spacing:.02em;text-align:right}
+.intro{font-size:1.08rem;color:var(--muted);margin:0 0 30px;max-width:46ch}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.facts{display:flex;gap:clamp(24px,4vw,44px);margin-top:40px;padding-top:24px;border-top:1px solid var(--line)}
+.facts b{display:block;font-size:2rem;line-height:1.1;color:var(--navy);font-weight:800}
+.facts span{font-size:.86rem;color:var(--muted)}
+
+.showcase{position:relative;margin:0;padding:clamp(18px,3vw,30px) clamp(14px,2.4vw,24px) clamp(16px,2.4vw,24px)}
+.devices{position:relative;z-index:1;padding:0 5% 9% 11%}
+.showcase::before{content:"";position:absolute;inset:0;background:linear-gradient(160deg,var(--bg-2),color-mix(in srgb,var(--olive-soft) 70%,var(--bg)));border-radius:28px;z-index:0}
+.laptop{position:relative;z-index:1}
+.laptop .lid{background:#1A2238;border-radius:16px 16px 6px 6px;padding:2.2% 2.2% 2.8%;box-shadow:var(--sh-2)}
+.laptop .scr{aspect-ratio:16/10;border-radius:6px;overflow:hidden;background:#fff}
+.laptop .scr img{width:100%;height:100%;object-fit:cover;object-position:top;transition:object-position 9s cubic-bezier(.45,.05,.35,1)}
+.showcase:hover .laptop .scr img{object-position:bottom}
+.laptop .base{position:relative;height:clamp(10px,1.5vw,16px);margin-inline:-5%;background:linear-gradient(180deg,#ECE8E0,#CDC7BB);border-radius:0 0 18px 18px;box-shadow:0 16px 24px -18px rgba(21,34,61,.5)}
+.laptop .base::after{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:15%;height:45%;background:#BEB8AC;border-radius:0 0 8px 8px}
+.device-phone{position:absolute;z-index:2;left:0;bottom:0;width:21%;aspect-ratio:9/19;border:clamp(4px,.55vw,7px) solid #141A2B;border-radius:clamp(16px,2.2vw,26px);overflow:hidden;background:#fff;box-shadow:0 24px 40px -18px rgba(21,34,61,.55)}
+.device-phone img{width:100%;transition:transform 9s cubic-bezier(.45,.05,.35,1)}
+.hero .device-phone{animation:float 7s ease-in-out infinite}
+@keyframes float{50%{translate:0 -7px}}
+.showcase figcaption{position:relative;z-index:1;margin-top:clamp(10px,1.6vw,16px);display:flex;align-items:center;gap:10px;font-size:.86rem;color:var(--muted);flex-wrap:wrap}
+
+/* ---------- sections ---------- */
+.section{padding-block:clamp(64px,9vw,112px)}
+.band{background:var(--surface);border-block:1px solid var(--line)}
+.sec-head{max-width:660px;margin-bottom:clamp(32px,4vw,52px)}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.84rem;font-weight:700;color:var(--olive)}
+.eyebrow::before{content:"";width:24px;height:2px;border-radius:2px;background:currentColor}
+.sec-head h2{font-size:clamp(1.75rem,3.2vw,2.45rem);line-height:1.4;margin:10px 0 10px;text-wrap:balance}
+.sec-head p{margin:0;color:var(--muted)}
+.tag{display:inline-flex;align-items:center;gap:7px;width:fit-content;padding:2px 12px;border-radius:999px;font-size:.78rem;font-weight:600;background:var(--olive-soft);color:var(--olive)}
+.tag.real{background:#E7F2EC;color:var(--live)}
+.tag.manage-tag{background:#E8ECF4;color:var(--navy-2)}
+.tag.real::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+
+/* ---------- about ---------- */
+.about{display:grid;grid-template-columns:300px 1fr;gap:clamp(32px,5vw,64px);align-items:start}
+.profile{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:28px;text-align:center;box-shadow:var(--sh-1)}
+.profile img{width:124px;height:124px;border-radius:50%;object-fit:cover;margin:0 auto 16px;border:4px solid var(--bg);box-shadow:0 0 0 1px var(--line)}
+.profile h3{margin:0;font-size:1.2rem}
+.profile p{margin:4px 0 16px;color:var(--muted);font-size:.9rem}
+.profile .tag{margin-inline:auto}
+.about-text p{margin:0 0 16px;font-size:1.04rem;max-width:62ch}
+.about-text p:first-child{font-size:1.15rem;color:var(--navy);font-weight:500}
+.highlights{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.highlights li{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:.93rem;font-weight:500;color:var(--navy);line-height:1.7}
+.highlights svg{flex:none;width:22px;height:22px;color:var(--olive);margin-top:1px}
+
+/* ---------- skills ---------- */
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.skill{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:20px 20px 18px;transition:border-color .3s,transform .3s var(--ease),background-color .3s}
+.skill:hover{border-color:color-mix(in srgb,var(--olive) 45%,var(--line));transform:translateY(-3px);background:var(--surface)}
+.skill .n{font-size:.78rem;font-weight:700;color:var(--olive)}
+.skill h3{margin:6px 0 2px;font-size:1.05rem}
+.skill p{margin:0;font-size:.86rem;color:var(--muted);line-height:1.7}
+.sub-title{margin:clamp(44px,6vw,64px) 0 18px;font-size:1.12rem}
+.services{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);border-top:1.5px solid var(--navy)}
+.services li{padding:16px 16px 4px 0;border-inline-start:1px solid var(--line);min-width:0}
+.services li:first-child{border-inline-start:none;padding-inline-start:0}
+.services h4{margin:0 0 4px;font-size:.98rem}
+.services p{margin:0;font-size:.86rem;color:var(--muted);line-height:1.7}
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:clamp(36px,5vw,52px)}
+.tool-group{border:1px dashed var(--line);border-radius:16px;padding:18px}
+.tool-group h4{margin:0 0 4px;font-size:.92rem}
+.tool-group p{margin:0 0 12px;font-size:.82rem;color:var(--muted);line-height:1.6}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;font-size:.8rem;padding:2px 11px;border-radius:999px;background:var(--bg);border:1px solid var(--line);color:var(--text);white-space:nowrap}
+
+/* ---------- portfolio ---------- */
+.group + .group{margin-top:clamp(72px,9vw,104px);padding-top:clamp(48px,6vw,64px);border-top:1px solid var(--line)}
+.group-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px 32px;flex-wrap:wrap;margin-bottom:28px}
+.group-head h3{margin:8px 0 6px;font-size:clamp(1.3rem,2.4vw,1.6rem)}
+.group-head p{margin:0;color:var(--muted);max-width:62ch;font-size:.95rem}
+.filters{display:flex;gap:6px;flex-wrap:wrap}
+.filters button{font:500 .88rem var(--font);border:1px solid var(--line);background:var(--surface);color:var(--muted);padding:6px 16px;border-radius:999px;cursor:pointer;min-height:38px;transition:background-color .25s,color .25s,border-color .25s}
+.filters button:hover{border-color:var(--navy);color:var(--navy)}
+.filters button[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:var(--on-navy)}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--sh-1);transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s}
+.card:hover{transform:translateY(-4px);box-shadow:var(--sh-2)}
+.card[hidden]{display:none}
+.media{position:relative;height:300px;padding:26px 26px 0 16%;background:var(--st,#ECEEF2);overflow:hidden}
+.media .browser{height:100%;background:#fff;border-radius:10px 10px 0 0;overflow:hidden;box-shadow:0 14px 34px -20px rgba(21,34,61,.5)}
+.bar{display:flex;gap:5px;align-items:center;height:26px;padding-inline:12px;background:#F1F2F5;direction:ltr}
+.bar i{width:8px;height:8px;border-radius:50%;background:#D5D8DF}
+.media .shot{width:100%;height:calc(100% - 26px);object-fit:cover;object-position:top;transition:object-position 8s cubic-bezier(.45,.05,.35,1)}
+.card:hover .media .shot,.card:focus-within .media .shot{object-position:bottom}
+.media .device-phone{left:20px;bottom:auto;top:38%;width:22%;border-width:5px;border-radius:18px}
+.media.no-phone{padding-left:26px}
+.media .open{all:unset;position:absolute;inset:0;cursor:zoom-in;z-index:3}
+.media .open:focus-visible{outline:2px solid var(--olive);outline-offset:-4px;border-radius:22px}
+.card-body{display:flex;flex-direction:column;gap:10px;padding:22px 24px 24px;flex:1}
+.card h4{margin:0;font-size:1.25rem;line-height:1.5}
+.card p{margin:0;color:var(--muted);font-size:.93rem;line-height:1.8}
+.meta{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;margin:4px 0 0;padding-top:14px;border-top:1px solid var(--line);font-size:.88rem}
+.meta dt{color:var(--muted)}
+.meta dd{margin:0;color:var(--navy);font-weight:600}
+.card-foot{margin-top:auto;padding-top:10px;display:flex;gap:10px;flex-wrap:wrap}
+.card.featured{grid-column:1/-1;flex-direction:row}
+.card.featured .media{flex:1.35;height:430px}
+.card.featured .card-body{flex:1;justify-content:center;padding:32px}
+.card.featured .card-foot{margin-top:8px}
+.card.featured h4{font-size:1.6rem}
+.manage .card{background:color-mix(in srgb,var(--surface) 70%,var(--bg))}
+.note{display:flex;gap:10px;align-items:flex-start;margin-top:22px;padding:14px 18px;border-radius:14px;background:var(--surface);border:1px solid var(--line);font-size:.88rem;color:var(--muted)}
+.note svg{flex:none;width:20px;height:20px;color:var(--olive);margin-top:3px}
+
+/* ---------- experience ---------- */
+.timeline{display:grid;gap:18px}
+.exp{display:grid;grid-template-columns:200px 1fr;gap:clamp(18px,3vw,36px);background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:clamp(22px,3vw,32px)}
+.when{color:var(--olive);font-weight:700;font-size:.92rem}
+.where{display:block;color:var(--muted);font-size:.86rem;font-weight:400;margin-top:2px}
+.exp h3{margin:0 0 4px;font-size:1.2rem}
+.exp > div > p{margin:0;color:var(--muted);font-size:.93rem}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+.sub{background:var(--bg);border-radius:16px;padding:18px 20px}
+.sub h4{margin:6px 0 8px;font-size:1rem}
+ul.dots{margin:0;padding-inline-start:18px;display:flex;flex-direction:column;gap:4px;font-size:.92rem}
+ul.dots li::marker{color:var(--olive)}
+.exp.edu{align-items:center}
+.exp.edu h3{margin:0}
+
+/* ---------- faq ---------- */
+.faq{max-width:860px;border-top:1.5px solid var(--navy)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:18px;font-weight:700;font-size:1.06rem;color:var(--navy)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--olive);color:var(--olive);display:grid;place-items:center;font-weight:500;line-height:1;transition:transform .25s var(--ease)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .a{padding:0 0 20px;color:var(--muted);max-width:70ch}
+.faq .a p{margin:0 0 10px}
+
+/* ---------- contact ---------- */
+.contact{position:relative;overflow:hidden;background:var(--navy);color:var(--on-navy);border-radius:28px;padding:clamp(30px,6vw,68px);display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(28px,5vw,56px);align-items:center}
+.contact::before{content:"";position:absolute;width:520px;height:520px;left:-180px;top:-220px;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--olive-on-navy) 22%,transparent),transparent);pointer-events:none}
+.contact > *{position:relative}
+.contact .eyebrow{color:var(--olive-on-navy)}
+.contact h2{color:#fff;font-size:clamp(1.8rem,3.6vw,2.7rem);line-height:1.4;margin:12px 0 12px;text-wrap:balance}
+.contact p{margin:0 0 28px;opacity:.78;max-width:46ch}
+.btn-light{background:var(--olive-on-navy);color:var(--navy)}
+.btn-light:hover{background:#D6E2B0;box-shadow:0 14px 28px -16px rgba(0,0,0,.6)}
+.ways{display:flex;flex-direction:column;gap:10px}
+.way{display:flex;justify-content:space-between;align-items:center;gap:12px;border:1px solid color-mix(in srgb,var(--on-navy) 18%,transparent);background:color-mix(in srgb,var(--on-navy) 4%,transparent);border-radius:14px;padding:12px 16px;transition:border-color .25s}
+.way:hover{border-color:color-mix(in srgb,var(--on-navy) 40%,transparent)}
+.way small{display:block;opacity:.6;font-size:.78rem}
+.way .v{font-size:.98rem;direction:ltr;unicode-bidi:isolate;text-decoration:none;font-weight:500}
+.way a.v:hover{text-decoration:underline}
+.copy{font:500 .8rem var(--font);background:transparent;color:var(--on-navy);border:1px solid color-mix(in srgb,var(--on-navy) 30%,transparent);border-radius:9px;padding:6px 14px;cursor:pointer;white-space:nowrap;min-height:36px;transition:background-color .25s,border-color .25s}
+.copy:hover{border-color:var(--on-navy);background:color-mix(in srgb,var(--on-navy) 8%,transparent)}
+footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:28px 36px;color:var(--muted);font-size:.84rem}
+
+/* ---------- lightbox ---------- */
+dialog{border:none;padding:0;background:transparent;width:100%;max-width:min(1120px,94vw);color:var(--text)}
+dialog::backdrop{background:rgba(12,18,32,.72);backdrop-filter:blur(4px)}
+.lb{background:var(--surface);border-radius:20px;padding:20px;display:grid;grid-template-columns:1fr 260px;gap:24px;max-height:90vh}
+.lb-screen{height:min(68vh,620px);overflow-y:auto;border-radius:12px;border:1px solid var(--line);background:#fff}
+.lb-side{display:flex;flex-direction:column;gap:14px;min-width:0;overflow-y:auto}
+.lb-side h3{margin:0;font-size:1.4rem;line-height:1.5}
+.lb-side p{margin:4px 0 0;color:var(--muted);font-size:.9rem;line-height:1.8}
+.lb-side dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:.86rem}
+.lb-side dt{color:var(--muted)}
+.lb-side dd{margin:0;color:var(--navy);font-weight:600}
+.lb-phone{width:150px;height:300px;flex:none;align-self:center;border:6px solid #141A2B;border-radius:24px;overflow-y:auto;background:#fff}
+.lb-close{align-self:flex-end;font:500 .88rem var(--font);border:1px solid var(--line);background:transparent;color:var(--navy);border-radius:10px;padding:6px 14px;cursor:pointer;min-height:38px}
+.lb-close:hover{border-color:var(--navy)}
+
+/* ---------- reveal on scroll ---------- */
+.js .reveal{opacity:0;translate:0 18px;transition:opacity .8s var(--ease),translate .8s var(--ease)}
+.js .reveal.in{opacity:1;translate:none}
+.js .card.reveal{transition:opacity .8s var(--ease),translate .8s var(--ease),transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s}
+
+/* ---------- responsive ---------- */
+@media (max-width:1000px){
+  .skills{grid-template-columns:repeat(2,1fr)}
+  .services{grid-template-columns:1fr 1fr}
+  .services li{border-inline-start:none;border-top:1px solid var(--line);padding:14px 0}
+  .services li:first-child{border-top:none}
+  .services li:nth-child(even){padding-inline-start:16px;border-inline-start:1px solid var(--line)}
+  .services li:nth-child(2){border-top:none}
+  .tools{grid-template-columns:1fr 1fr}
+}
+@media (max-width:900px){
+  .menu-btn{display:inline-flex}
+  .nav{position:absolute;top:calc(100% + 6px);inset-inline:clamp(12px,4vw,24px);flex-direction:column;align-items:stretch;gap:2px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:10px;box-shadow:var(--sh-2);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .25s,transform .25s var(--ease),visibility .25s}
+  .nav.open{opacity:1;visibility:visible;transform:none}
+  .nav a{padding:12px 16px;font-size:1rem;border-radius:12px}
+  .nav a.nav-cta{margin:6px 0 0;text-align:center}
+  .hero{grid-template-columns:1fr}
+  .about{grid-template-columns:1fr}
+  .profile{display:grid;grid-template-columns:auto 1fr;gap:4px 18px;text-align:start;align-items:center;padding:20px}
+  .profile img{width:84px;height:84px;margin:0;grid-row:span 3}
+  .profile p{margin:0}
+  .profile .tag{margin:4px 0 0}
+  .card.featured{flex-direction:column}
+  .card.featured .media{height:340px;flex:none}
+  .card.featured .card-body{padding:22px 24px 24px}
+  .exp{grid-template-columns:1fr;gap:10px}
+  .contact{grid-template-columns:1fr}
+  .lb{grid-template-columns:1fr;overflow-y:auto}
+  .lb-phone{display:none}
+}
+@media (max-width:640px){
+  .cards{grid-template-columns:1fr}
+  .highlights{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr}
+  .tools{grid-template-columns:1fr}
+  .services{grid-template-columns:1fr}
+  .services li,.services li:nth-child(even){padding:14px 0;border-inline-start:none;border-top:1px solid var(--line)}
+  .services li:first-child{border-top:none}
+  .media,.card.featured .media{height:250px;padding:20px 20px 0 18%}
+  .media .device-phone{left:12px;width:24%}
+  .btns .btn{flex:1 1 auto}
+  .facts{gap:28px}
+  .card.featured h4{font-size:1.3rem}
+  .group-head{align-items:flex-start}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
+  .js .reveal{opacity:1;translate:none}
+}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#main">رفتن به محتوای اصلی</a>
+
+<header class="site-header" id="siteHeader">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#home"><img src="img/me.webp" alt="" width="38" height="38">محدثه توکلی</a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="باز کردن منو">
+      <svg class="bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <nav class="nav" id="siteNav" aria-label="منوی اصلی">
+      <a href="#home">خانه</a>
+      <a href="#about">درباره من</a>
+      <a href="#skills">مهارت‌ها</a>
+      <a href="#work">نمونه‌کارها</a>
+      <a href="#experience">تجربه کاری</a>
+      <a href="#contact" class="nav-cta">تماس با من</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <!-- ===== hero ===== -->
+  <section class="wrap hero" id="home">
+    <div class="reveal">
+      <span class="badge"><i></i>آماده‌ی همکاری پروژه‌ای و دورکاری</span>
+      <h1>طراحی وب‌سایت و <span>مدیریت فروشگاه اینترنتی</span></h1>
+      <p class="stack ltr">WordPress · Elementor · WooCommerce · Website Management</p>
+      <p class="intro">من محدثه توکلی هستم؛ طراح و مدیر وب‌سایت با تمرکز بر طراحی سایت‌های وردپرسی، پیاده‌سازی صفحات و مدیریت فروشگاه‌های اینترنتی.</p>
+      <div class="btns">
+        <a class="btn btn-primary" href="#work">مشاهده نمونه‌کارها
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+        <a class="btn btn-outline" href="#contact">ارتباط برای همکاری</a>
+      </div>
+      <div class="facts">
+        <div><b>۴</b><span>نمونه‌طراحی شخصی</span></div>
+        <div><b>۲</b><span>سایت فعال تحت مدیریت</span></div>
+      </div>
+    </div>
+
+    <figure class="showcase reveal">
+      <div class="devices">
+      <div class="laptop">
+        <div class="lid"><div class="scr"><img src="img/johar-desk.webp" alt="صفحه‌ی اصلی فروشگاه استادجوهر در نمای دسکتاپ" width="1100" height="3621" fetchpriority="high"></div></div>
+        <div class="base"></div>
+      </div>
+      <div class="device-phone" id="heroPhone"><img src="img/johar-mob.webp" alt="نسخه‌ی موبایل فروشگاه استادجوهر"></div>
+      </div>
+      <figcaption><span class="tag real">پروژه‌ی واقعی و فعال</span><span><a href="https://ostadjohar.ir/" target="_blank" rel="noopener" style="text-decoration:none">فروشگاه استادجوهر</a> · طراحی، پیاده‌سازی و مدیریت: محدثه توکلی</span></figcaption>
+    </figure>
+  </section>
+
+  <!-- ===== about ===== -->
+  <section class="section band" id="about">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">درباره من</span>
+        <h2>طراحی دقیق، مدیریت منظم</h2>
+      </div>
+      <div class="about">
+        <aside class="profile reveal">
+          <img src="img/me.webp" alt="محدثه توکلی" width="124" height="124" loading="lazy">
+          <h3>محدثه توکلی</h3>
+          <p>طراح وب‌سایت و مدیر فروشگاه اینترنتی · تهران</p>
+          <span class="tag">همکاری پروژه‌ای و دورکاری</span>
+        </aside>
+        <div class="about-text reveal">
+          <p>فروشگاه اینترنتی استادجوهر را از صفر تا انتشار خودم طراحی و پیاده‌سازی کرده‌ام. چهار وب‌سایت دیگرِ بخش نمونه‌کار هم پروژه‌های شخصی من هستند که طراحی و پیاده‌سازی آن‌ها را به‌صورت مستقل انجام داده‌ام.</p>
+          <p>در کنار طراحی، تجربه‌ی مدیریت وب‌سایت‌های فعال را دارم؛ مدیریت سایت‌های استادجوهر و استادمهر (که با سایت‌ساز ساخته شده): بارگذاری و سازمان‌دهی محصولات، مدیریت دسته‌بندی‌ها و به‌روزرسانی محتوای فروشگاه.</p>
+          <p>در کارم به طراحی کاربرپسند، نمایش صحیح در موبایل و دسکتاپ و نظم در ساختار صفحات اهمیت می‌دهم و علاقه‌مند به همکاری پروژه‌ای و دورکاری هستم.</p>
+          <ul class="highlights">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>طراحی و پیاده‌سازی فروشگاه واقعی استادجوهر</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>چهار نمونه‌طراحی شخصی در حوزه‌های مختلف</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>مدیریت سایت، محصولات و محتوای فروشگاه</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>آماده‌ی همکاری پروژه‌ای و دورکاری</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== skills ===== -->
+  <section class="section" id="skills">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">مهارت‌ها</span>
+        <h2>مهارت‌ها و خدمات</h2>
+        <p>بسته به نیاز پروژه، خدمات طراحی و پیاده‌سازی سایت یا مدیریت و به‌روزرسانی وب‌سایت ارائه می‌شود.</p>
+      </div>
+      <div class="skills reveal">
+        <div class="skill"><span class="n">۰۱</span><h3 class="ltr" style="text-align:right">WordPress</h3><p>ساخت و مدیریت سایت وردپرسی</p></div>
+        <div class="skill"><span class="n">۰۲</span><h3 class="ltr" style="text-align:right">Elementor</h3><p>طراحی صفحات با Elementor و Elementor Pro</p></div>
+        <div class="skill"><span class="n">۰۳</span><h3 class="ltr" style="text-align:right">WooCommerce</h3><p>ساختار فروشگاه و مسیر خرید</p></div>
+        <div class="skill"><span class="n">۰۴</span><h3>طراحی صفحات وب</h3><p>چیدمان صفحات و تجربه‌ی کاربری</p></div>
+        <div class="skill"><span class="n">۰۵</span><h3>طراحی واکنش‌گرا</h3><p>نمایش درست در موبایل، تبلت و دسکتاپ</p></div>
+        <div class="skill"><span class="n">۰۶</span><h3>مدیریت محصولات</h3><p>بارگذاری، سازمان‌دهی و دسته‌بندی محصولات</p></div>
+        <div class="skill"><span class="n">۰۷</span><h3>مدیریت محتوای وب‌سایت</h3><p>به‌روزرسانی صفحات و محتوای سایت</p></div>
+        <div class="skill"><span class="n">۰۸</span><h3>پشتیبانی و به‌روزرسانی سایت</h3><p>رسیدگی به به‌روزرسانی‌ها و مشکلات متداول</p></div>
+      </div>
+
+      <h3 class="sub-title reveal">خدمات قابل ارائه</h3>
+      <ol class="services reveal">
+        <li><h4>طراحی صفحات وب‌سایت</h4><p>طراحی و چیدمان صفحات با تمرکز بر ظاهر حرفه‌ای و تجربه‌ی کاربری.</p></li>
+        <li><h4>راه‌اندازی فروشگاه اینترنتی</h4><p>ایجاد ساختار فروشگاه، دسته‌بندی محصولات و مسیر خرید با ووکامرس.</p></li>
+        <li><h4>طراحی واکنش‌گرا</h4><p>بهینه‌سازی نمایش سایت در موبایل، تبلت و دسکتاپ.</p></li>
+        <li><h4>مدیریت وب‌سایت</h4><p>بارگذاری محصولات، مدیریت دسته‌بندی‌ها و به‌روزرسانی محتوا.</p></li>
+        <li><h4>پشتیبانی و نگهداری</h4><p>رسیدگی به به‌روزرسانی‌ها و مشکلات متداول سایت.</p></li>
+      </ol>
+
+      <div class="tools reveal">
+        <div class="tool-group"><h4>ابزارهای آشنا</h4><p>آشنایی با ابزارهای سئو، سرعت و امنیت وردپرس</p>
+          <div class="chips"><span class="chip">Elementor Pro</span><span class="chip">Hello Elementor</span><span class="chip">WoodMart</span><span class="chip">Yoast SEO</span><span class="chip">Search Console</span><span class="chip">Google Analytics</span><span class="chip">WP Rocket</span><span class="chip">Wordfence</span><span class="chip">cPanel</span></div></div>
+        <div class="tool-group"><h4>هوش مصنوعی در کار روزانه</h4><p>برای ایده‌پردازی، تولید محتوا و کمک به روند طراحی</p>
+          <div class="chips"><span class="chip">Claude</span><span class="chip">ChatGPT</span><span class="chip">Gemini</span><span class="chip">Lovable</span></div></div>
+        <div class="tool-group"><h4>سایر مهارت‌ها</h4><p>مهارت‌های تکمیلی</p>
+          <div class="chips"><span class="chip">مدیریت محتوا</span><span class="chip">پشتیبانی کاربران</span><span class="chip">Microsoft Office</span><span class="chip">زبان انگلیسی</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== portfolio ===== -->
+  <section class="section band" id="work">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">نمونه‌کارها</span>
+        <h2>نمونه‌کارها، با نقش دقیق من در هر پروژه</h2>
+        <p>پروژه‌ی واقعی‌ای که طراحی کرده‌ام، نمونه‌طراحی‌های شخصی و سایتی که فقط مدیریتش با من است، جدا از هم آمده‌اند. روی تصویر هر پروژه نگه دارید تا صفحه اسکرول شود؛ با کلیک، پیش‌نمایش کامل باز می‌شود.</p>
+      </div>
+
+      <div class="group" id="real">
+        <div class="group-head reveal">
+          <div>
+            <span class="tag real">پروژه‌ی واقعی · آنلاین و فعال</span>
+            <h3>طراحی و پیاده‌سازی از صفر</h3>
+            <p>فروشگاه اینترنتی استادجوهر یک پروژه‌ی واقعی و فعال است که طراحی و پیاده‌سازی آن را از صفر تا انتشار خودم انجام داده‌ام و مدیریت سایت هم با من است.</p>
+          </div>
+        </div>
+        <div class="cards" id="realCards"></div>
+      </div>
+
+      <div class="group" id="samples">
+        <div class="group-head reveal">
+          <div>
+            <span class="tag">نمونه‌کار شخصی</span>
+            <h3>طراحی و پیاده‌سازی شخصی</h3>
+            <p>این وب‌سایت‌ها پروژه‌های شخصی و نمونه‌کار من هستند که طراحی و پیاده‌سازی آن‌ها را خودم انجام داده‌ام. این موارد پروژه‌های کارفرمایی یا سایت‌های فعال مشتریان نیستند.</p>
+          </div>
+        </div>
+        <div class="cards" id="designCards"></div>
+      </div>
+
+      <div class="group" id="managed">
+        <div class="group-head reveal">
+          <div>
+            <span class="tag manage-tag">مدیریت سایت</span>
+            <h3>تجربه‌ی مدیریت وب‌سایت</h3>
+            <p>استادمهر سایت واقعی و فعالی است که با سایت‌ساز ایجاد شده. مسئولیت من در این پروژه مدیریت وب‌سایت، بارگذاری و مدیریت محصولات است؛ طراحی و توسعه‌ی این سایت را به‌عنوان کار خودم معرفی نمی‌کنم.</p>
+          </div>
+        </div>
+        <div class="cards manage" id="manageCards"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== experience ===== -->
+  <section class="section" id="experience">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">تجربه کاری</span>
+        <h2>سوابق کاری و تحصیلات</h2>
+        <p>تجربه در طراحی و پیاده‌سازی نمونه‌کارهای وب‌سایت و مدیریت فروشگاه‌های اینترنتی.</p>
+      </div>
+      <div class="timeline">
+        <article class="exp reveal">
+          <div class="when">مهر ۱۴۰۴ تا اکنون<span class="where">پروژه‌ای · تهران</span></div>
+          <div>
+            <h3>ادمین و طراح سایت</h3>
+            <div class="split">
+              <div class="sub">
+                <span class="tag">طراحی سایت</span>
+                <h4>طراحی و پیاده‌سازی · استادجوهر و نمونه‌کارهای شخصی</h4>
+                <ul class="dots">
+                  <li>طراحی و راه‌اندازی فروشگاه اینترنتی استادجوهر از صفر تا انتشار</li>
+                  <li>طراحی و پیاده‌سازی مستقل وب‌سایت‌های نمونه‌کار</li>
+                  <li>طراحی صفحات با Elementor و Elementor Pro</li>
+                  <li>کار با WordPress و WooCommerce</li>
+                  <li>طراحی ساختار صفحات و دسته‌بندی محصولات</li>
+                  <li>بهینه‌سازی نمایش سایت در موبایل و دسکتاپ</li>
+                  <li>آشنایی با ابزارهای سئو، سرعت و امنیت وردپرس</li>
+                </ul>
+              </div>
+              <div class="sub">
+                <span class="tag real">مدیریت سایت</span>
+                <h4>مدیریت سایت و محصولات · استادجوهر و استادمهر</h4>
+                <ul class="dots">
+                  <li>مدیریت وب‌سایت‌های فعال</li>
+                  <li>بارگذاری و سازمان‌دهی محصولات</li>
+                  <li>مدیریت دسته‌بندی‌ها</li>
+                  <li>به‌روزرسانی محتوای سایت</li>
+                  <li>مدیریت و پیگیری درخواست‌های کاربران</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="exp reveal">
+          <div class="when">اردیبهشت ۱۴۰۲ تا بهمن ۱۴۰۴<span class="where">تهران</span></div>
+          <div>
+            <h3>ادمین و پشتیبان</h3>
+            <ul class="dots" style="margin-top:10px">
+              <li>پاسخ‌گویی به مخاطبان در اینستاگرام، واتس‌اپ، تلگرام، بله و روبیکا</li>
+              <li>مدیریت دایرکت‌ها، کامنت‌ها و پیام‌های ورودی</li>
+              <li>راهنمایی کاربران و پیگیری درخواست‌ها و مشکلات مشتریان</li>
+            </ul>
+          </div>
+        </article>
+        <article class="exp edu reveal">
+          <div class="when">تحصیلات</div>
+          <div>
+            <h3>کارشناسی روان‌شناسی</h3>
+            <p>مدرسه‌ی عالی شهید مطهری، تهران</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== faq ===== -->
+  <section class="section band" id="faq" style="padding-block:clamp(56px,7vw,88px)">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">سؤالات متداول</span>
+        <h2>پیش از شروع همکاری</h2>
+      </div>
+      <div class="faq reveal">
+        <details open>
+          <summary>آیا این سایت‌ها تماماً با هوش مصنوعی ساخته شده‌اند؟</summary>
+          <div class="a">
+            <p>خیر. فروشگاه استادجوهر پروژه‌ی واقعی‌ای است که طراحی و پیاده‌سازی آن را از صفر خودم انجام داده‌ام، و چهار نمونه‌کار دیگر پروژه‌های شخصی من هستند. سایت استادمهر با سایت‌ساز ساخته شده و مسئولیت من در آن مدیریت سایت و محصولات است.</p>
+            <p>از ابزارهای هوش مصنوعی نیز برای ایده‌پردازی، تولید محتوا و کمک به روند طراحی استفاده می‌کنم.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== contact ===== -->
+  <div class="wrap" style="padding-top:clamp(64px,9vw,104px)">
+    <section class="contact reveal" id="contact">
+      <div>
+        <span class="eyebrow">تماس با من</span>
+        <h2>برای شروع یک همکاری حرفه‌ای آماده‌ام.</h2>
+        <p>اگر برای طراحی وب‌سایت، مدیریت فروشگاه اینترنتی یا پشتیبانی وب‌سایت به همکاری نیاز دارید، خوشحال می‌شوم گفت‌وگو کنیم.</p>
+        <a class="btn btn-light" href="https://t.me/Mohadeseh0831" target="_blank" rel="noopener">شروع گفت‌وگو در تلگرام
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+      </div>
+      <div class="ways">
+        <div class="way"><div><small>تلگرام</small><a class="v" href="https://t.me/Mohadeseh0831" target="_blank" rel="noopener">@Mohadeseh0831</a></div><button class="copy" type="button" data-copy="@Mohadeseh0831">کپی</button></div>
+        <div class="way"><div><small>ایمیل</small><a class="v" href="mailto:mohitvk644@gmail.com">mohitvk644@gmail.com</a></div><button class="copy" type="button" data-copy="mohitvk644@gmail.com">کپی</button></div>
+        <div class="way"><div><small>تلفن</small><a class="v" href="tel:+989911595827">+98 991 159 5827</a></div><button class="copy" type="button" data-copy="+989911595827">کپی</button></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="wrap"><span>© ۱۴۰۵ محدثه توکلی</span><span>طراحی و مدیریت وب‌سایت وردپرس · تهران</span></footer>
+
+<dialog id="lb" aria-labelledby="lbTitle">
+  <div class="lb">
+    <div class="lb-screen" id="lbScreen" tabindex="0"></div>
+    <div class="lb-side">
+      <button class="lb-close" id="lbClose" type="button">بستن ✕</button>
+      <div><h3 id="lbTitle"></h3><p id="lbDesc"></p></div>
+      <dl id="lbMeta"></dl>
+      <div id="lbLink"></div>
+      <div class="lb-phone" id="lbPhone" tabindex="0"></div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+/* Real, live project designed and built from scratch by me. */
+const REAL = [
+  { featured:true, title:"استادجوهر", desc:"فروشگاه آنلاین جوهر، استامپ و لیقه‌ی مهر با دسته‌بندی محصولات، پرفروش‌ها و بلاگ. طراحی و پیاده‌سازی این سایت را از صفر تا انتشار خودم انجام داده‌ام.",
+    type:"فروشگاه اینترنتی · پروژه‌ی واقعی", platform:"WordPress · WooCommerce", url:"https://ostadjohar.ir/", role:"طراحی و پیاده‌سازی از صفر تا انتشار و مدیریت سایت", desk:"img/johar-desk.webp", mob:"img/johar-mob.webp", st:"#E9ECF3" }
+];
+/* Personal design samples: designed and built by me. */
+const DESIGNS = [
+  { title:"آرام زیستن", desc:"فروشگاه دوره‌های آنلاین روانشناسی و رشد فردی با معرفی مدرس، صفحه‌ی هر دوره، سبد خرید و پرسش‌های متداول.",
+    type:"فروشگاه دوره‌های آنلاین", platform:"WordPress · WooCommerce", url:"https://mohadeseh-tavakoli.github.io/Aram-zist/index.html", desk:"img/aram-desk.webp", st:"#E9EFE6" },
+  { title:"ÉLORA", desc:"فروشگاه روسری با دسته‌بندی بر اساس موقعیت، پرفروش‌ها، جدیدترین‌ها و راهنمای انتخاب روسری.",
+    type:"فروشگاه اینترنتی", platform:"HTML · CSS · JavaScript", url:"https://mohadeseh-tavakoli.github.io/elora-store/#home", desk:"img/elora-desk.webp", st:"#EFE7DC" },
+  { title:"GLOWÉ", desc:"فروشگاه چندبرندی محصولات آرایشی و مراقبت پوست با دسته‌بندی، برندها، تازه‌رسیده‌ها و مجله‌ی زیبایی.",
+    type:"فروشگاه اینترنتی", platform:"HTML · CSS · JavaScript", url:"https://mohadeseh-tavakoli.github.io/glowe/index.html#new", desk:"img/glowe-desk.webp", st:"#F3E4E8" },
+  { title:"زرینه", desc:"فروشگاه جواهر و زیورآلات با دسته‌بندی محصولات، نرخ لحظه‌ای طلا، پرفروش‌ها و داستان برند.",
+    type:"فروشگاه اینترنتی", platform:"HTML · CSS · JavaScript", url:"https://mohadeseh-tavakoli.github.io/zarine-jewelry/index.html", desk:"img/zarine-desk.webp", st:"#EADFCF" }
+];
+/* Real site built on a site builder by others: my role is site & product management only. */
+const MANAGED = [
+  { featured:true, title:"استادمهر", desc:"پروژه‌ی واقعی فروشگاه استادمهر. سایت با سایت‌ساز ایجاد شده و مسئولیت من مدیریت وب‌سایت، بارگذاری و مدیریت محصولات و به‌روزرسانی محتوای سایت است.",
+    type:"پروژه‌ی واقعی · سایت‌ساز", platform:"سایت‌ساز", url:"https://ostadmohr.ir/", desk:"img/mehr-desk.webp", mob:"img/mehr-mob.webp", st:"#EFE9F2" }
+];
+/* Per-group labels: tag on the card, my role, status. Set url on a project to link «مشاهده وب‌سایت» to the live site. */
+const KINDS = {
+  real:   { tag:"آنلاین و فعال", tagClass:"real", role:"طراحی و پیاده‌سازی از صفر تا انتشار", status:"آنلاین و فعال" },
+  design: { tag:"نمونه‌طراحی شخصی", tagClass:"", role:"طراحی و پیاده‌سازی", status:"نمونه‌طراحی شخصی" },
+  manage: { tag:"مدیریت سایت", tagClass:"manage-tag", role:"مدیریت وب‌سایت، بارگذاری و مدیریت محصولات", status:"آنلاین و فعال" }
+};
+const ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>';
+
+/* scroll a tall phone screenshot inside its frame on hover/focus */
+function wirePhone(host, box){
+  const img = box && box.querySelector('img'); if(!img) return;
+  const go = ()=>{ img.style.transform = `translateY(-${Math.max(0, img.offsetHeight - box.offsetHeight)}px)`; };
+  const back = ()=>{ img.style.transform = ''; };
+  host.addEventListener('mouseenter',go); host.addEventListener('mouseleave',back);
+  host.addEventListener('focusin',go); host.addEventListener('focusout',back);
+}
+
+function card(p, kind){
+  const k = KINDS[kind];
+  const el = document.createElement('article');
+  el.className = 'card reveal' + (p.featured ? ' featured' : '');
+  if (p.cat) el.dataset.cat = p.cat;
+  const role = p.role || k.role;
+  const meta = [["نوع پروژه", p.type], ["نقش من", role]];
+  el.innerHTML = `
+    <div class="media${p.mob?'':' no-phone'}" style="--st:${p.st}">
+      <div class="browser"><div class="bar"><i></i><i></i><i></i></div><img class="shot" src="${p.desk}" alt="نمای دسکتاپ ${p.title}" loading="lazy"></div>
+      ${p.mob?`<div class="device-phone"><img src="${p.mob}" alt="" loading="lazy"></div>`:''}
+      <button class="open" type="button" aria-label="پیش‌نمایش کامل ${p.title}"></button>
+    </div>
+    <div class="card-body">
+      <span class="tag ${k.tagClass}">${k.tag}</span>
+      <h4>${p.title}</h4>
+      <p>${p.desc}</p>
+      <dl class="meta">${meta.map(([a,b])=>`<dt>${a}</dt><dd>${b}</dd>`).join('')}</dl>
+      <div class="card-foot">${p.url
+        ? `<a class="btn btn-primary btn-sm" href="${p.url}" target="_blank" rel="noopener">مشاهده وب‌سایت ${ARROW}</a><button class="btn btn-outline btn-sm view" type="button">پیش‌نمایش</button>`
+        : `<button class="btn btn-outline btn-sm view" type="button">مشاهده وب‌سایت ${ARROW}</button>`}</div>
+    </div>`;
+  const lbMeta = [["نقش من", role], ["نوع پروژه", p.type], ["پلتفرم", p.platform], ["وضعیت", k.status]];
+  const open = ()=>openLb(p, lbMeta);
+  el.querySelector('.open').addEventListener('click', open);
+  const v = el.querySelector('.view'); if (v) v.addEventListener('click', open);
+  wirePhone(el, el.querySelector('.device-phone'));
+  return el;
+}
+const realCards = document.getElementById('realCards');
+REAL.forEach(p=>realCards.appendChild(card(p,'real')));
+const designCards = document.getElementById('designCards');
+DESIGNS.forEach(p=>designCards.appendChild(card(p,'design')));
+const manageCards = document.getElementById('manageCards');
+MANAGED.forEach(p=>manageCards.appendChild(card(p,'manage')));
+
+
+/* lightbox */
+const lb = document.getElementById('lb');
+function openLb(p, meta){
+  const scr = document.getElementById('lbScreen'), ph = document.getElementById('lbPhone');
+  scr.innerHTML = `<img src="${p.desk}" alt="نسخه‌ی دسکتاپ ${p.title}">`;
+  ph.innerHTML = p.mob ? `<img src="${p.mob}" alt="نسخه‌ی موبایل ${p.title}">` : ''; ph.style.display = p.mob ? '' : 'none';
+  scr.scrollTop = 0; ph.scrollTop = 0;
+  document.getElementById('lbTitle').textContent = p.title;
+  document.getElementById('lbDesc').textContent = p.desc;
+  document.getElementById('lbMeta').innerHTML = meta.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join('');
+  document.getElementById('lbLink').innerHTML = p.url ? `<a class="btn btn-primary btn-sm" href="${p.url}" target="_blank" rel="noopener">باز کردن سایت ${ARROW}</a>` : '';
+  if (typeof lb.showModal === 'function') lb.showModal(); else lb.setAttribute('open','');
+}
+document.getElementById('lbClose').addEventListener('click',()=>lb.close());
+lb.addEventListener('click',e=>{ if(e.target===lb) lb.close(); });
+
+/* mobile menu */
+const menuBtn = document.getElementById('menuBtn'), nav = document.getElementById('siteNav');
+function setMenu(open){ nav.classList.toggle('open',open); menuBtn.setAttribute('aria-expanded',String(open)); menuBtn.setAttribute('aria-label', open ? 'بستن منو' : 'باز کردن منو'); }
+menuBtn.addEventListener('click',()=>setMenu(!nav.classList.contains('open')));
+nav.addEventListener('click',e=>{ if(e.target.closest('a')) setMenu(false); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') setMenu(false); });
+document.addEventListener('click',e=>{ if(nav.classList.contains('open') && !e.target.closest('.nav-inner')) setMenu(false); });
+
+/* header border after scroll */
+const header = document.getElementById('siteHeader');
+const onScroll = ()=>header.classList.toggle('scrolled', scrollY > 8);
+addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+/* hero phone scrolls with the laptop on hover */
+wirePhone(document.querySelector('.showcase'), document.getElementById('heroPhone'));
+
+/* copy contact details */
+document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',async()=>{
+  try{ await navigator.clipboard.writeText(b.dataset.copy); b.textContent='کپی شد'; }
+  catch(_){ b.textContent='کپی نشد'; }
+  setTimeout(()=>{ b.textContent='کپی'; },1600);
+}));
+
+/* gentle reveal on scroll */
+const items = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window){
+  const io = new IntersectionObserver(es=>es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }),{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  items.forEach(el=>io.observe(el));
+} else items.forEach(el=>el.classList.add('in'));
+</script>
+</body>
+</html>
